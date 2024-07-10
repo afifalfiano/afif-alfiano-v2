@@ -1,20 +1,20 @@
 [
 	{
-		"name": "Email.ML",
-		"description": "Minimalist temporary Email.",
-		"image": "/assets/images/projects/email.ml.png",
-		"url": "https://email.ml"
+		"name": "Filter Ticket",
+		"description": "Handle complain from customer and used by company which focuses on internet service provider.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://github.com/afifalfiano/filter-ticket"
 	},
 	{
-		"name": "DNS.Surf",
-		"description": "Querying DNS Resolution Results in Different Regions Worldwide.",
-		"image": "/assets/images/projects/dns.surf.png",
-		"url": "https://dns.surf"
+		"name": "Simple Suggest Tour App",
+		"description": "A simple application for recommendation favorit place in my hometown.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://github.com/afifalfiano/suggest-tour-app"
 	},
 	{
-		"name": "HTML.ZONE",
-		"description": "Web Toolbox.",
-		"image": "/assets/images/projects/html.zone.png",
-		"url": "https://html.zone"
+		"name": "Fast Direct Message Whatsapp",
+		"description": "A simple application to make easier people send messageo on whatsapp.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://fast-wa.vercel.app/"
 	}
 ]
