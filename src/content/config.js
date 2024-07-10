@@ -6,6 +6,15 @@ const postCollection = defineCollection({
 		title: z.string(),
 		description: z.string(),
 		dateFormatted: z.string(),
+		coverImage: z.string(),
+		wordCount: z.number(),
+		author: z.object({
+			name: z.string(),
+			picture: z.string(),
+		}),
+		ogImage: z.object({
+			url: z.string(),
+		})
 	}),
 });
 
