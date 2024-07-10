@@ -1,23 +1,67 @@
 ---
-const talksLoop: any[] = [];
+type TALKS = {
+    title: string;
+    description: string;
+    link: string;
+    file: string;
+    isFile: boolean;
+}
+
+const talksLoop: TALKS[] = [{
+    title: 'Web Accessibility',
+    description: 'Web accessibility adalah website yang kontennya dirancang agar dapat diakses dengan mudah termasuk oleh penyandang disabilitas.',
+    link: 'https://www.youtube.com/embed/bpGIUOrK7cg',
+    file: 'https://speakerdeck.com/afifalfiano/web-accessibility',
+    isFile: true
+  },
+  {
+    title: 'Tutorial Menggunakan Cypress di Angular',
+    description: 'Pada kesempatan kali ini kita akan belajar bersama-sama bagaimana cara menggunakan cypress di Angular khususnya untuk e2e test',
+    link: 'https://www.youtube.com/embed/Ervwl-EONSc',
+    file: 'https://github.com/afifalfiano/research-cypress',
+    isFile: true
+  },
+  {
+    title: 'Testing on Frontend',
+    description: 'Berbicara mengenai testing tentu ada banyak hal seperti unit, integrate dan e2e test. Mari kita pelajari secara general seperti apa itu testing',
+    link: 'https://www.youtube.com/embed/nKeQ0yam8ps',
+    file: 'https://speakerdeck.com/afifalfiano/testing-on-frontend',
+    isFile: true
+  },
+  {
+    title: 'Angular CLI with Bazel',
+    description: 'Bazel adalah sebuah tool yang dapat meningkatkan performa dan optimize proses building di production maupun development. Metode unggulan bazel adalah first cache.',
+    link: 'https://www.youtube.com/embed/DOc3VBQNgZ8',
+    file: 'https://speakerdeck.com/afifalfiano/angular-cli-with-bazel',
+    isFile: true
+  },
+  {
+    title: 'BSI CoffeeTalk #7 Curiosity, menantang diri sendiri',
+    description: 'Pada kesempatan kali ini saya dan mas sigit akan berbagi cerita bagaimana awal mula menjadi developer',
+    link: 'https://www.youtube.com/embed/ASa3o0elXiA',
+    file: '/talks',
+    isFile: false
+  }]
 ---
 
 {
-  talksLoop.map((post) => {
+  talksLoop.map((talk) => {
     return (
       <div
         class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl"
-        onclick={`location.href = '${post.link}'`}
+        onclick={`window.open('${talk.link}', '_blank')`}
       >
         <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1" />
         <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1" />
-        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
+        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1  sm:flex md:flex lg:flex xl:flex 2xl:flex md:gap-10 gap-0">
+          <div class="w-full md:w-2/3">
           <h2 class="flex items-center mb-3">
             <a
-              href={post.link}
+              href={talk.link}
+              target="_blank"
               class="text-xl font-bold leading-tight tracking-tight sm:text-2xl dark:text-neutral-100"
             >
-              {post.title}
+              {talk.title}
             </a>
             <svg
               class="group-hover:translate-x-0 flex-shrink-0 translate-y-0.5 -translate-x-1 w-2.5 h-2.5 stroke-current ml-1 transition-all ease-in-out duration-200  transform"
@@ -60,10 +104,11 @@ const talksLoop: any[] = [];
             </svg>
           </h2>
           <p class="text-sm text-neutral-600 dark:text-neutral-400">
-            <span>{post.description}</span>
+            <span>{talk.description}</span>
           </p>
-          <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">
-            Posted on {post.dateFormatted}
+          </div>
+          <div class="w-full md:w-1/3 md:mt-0 mt-5">
+            <iframe loading="lazy" src={talk.link} class="rounded-lg w-full h-52 md:h-auto"></iframe>
           </div>
         </div>
       </div>
