@@ -1,12 +1,12 @@
 ---
-const { logo, dates, role, company, description } = Astro.props;
+const { logo, dates, role, company, company_profile, description, company_link, techstacks } = Astro.props;
 ---
 
 <div class="relative flex flex-col justify-start pl-12">
   <div
-    class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-white border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700"
+    class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-gray-100 border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700"
   >
-    <img src={logo} alt={company} class="w-8 h-8" />
+    <img src={logo} alt={company} class="w-8 h-8 rounded" />
   </div>
 
   <p
@@ -15,8 +15,29 @@ const { logo, dates, role, company, description } = Astro.props;
     {dates}
   </p>
   <h3 class="my-1 text-lg font-bold dark:text-neutral-100">{role}</h3>
-  <p class="mb-1 text-sm font-medium dark:text-neutral-300">{company}</p>
-  <p class="text-sm font-light text-neutral-600 dark:text-neutral-400">
-    {description}
-  </p>
+  <a href={company_link}  target="_blank" class="mb-1 text-sm font-medium dark:text-neutral-300">
+    {company}
+  </a>
+  <p class="mb-3 text-sm dark:font-light light:font-normal dark:text-neutral-100">{company_profile}</p>
+  {description.map((desc: string) => {
+    return (
+      <p class="text-sm dark:font-light light:font-normal text-neutral-600 dark:text-neutral-400">
+        - {desc}
+      </p>
+    )
+  })}
+
+  <!-- {techstacks.length > 0 && (
+    <>
+      <p class="mb-1 mt-3 text-sm font-medium dark:text-neutral-300">Tech Stacks:</p>
+      {techstacks.map((tech: string) => {
+        return (
+          <span class="text-sm font-light text-neutral-600 dark:text-neutral-400">
+            {tech}
+          </span>
+        )
+      })}
+    </>
+  )} -->
+  
 </div>

@@ -1,23 +1,128 @@
 [
 	{
-		"dates": "June 2018 · Present",
-		"role": "Front-end Engineer",
-		"company": "Full Truck Alliance",
-		"description": "Responsible for customer service and CRM system front-end development.",
-		"logo": "/assets/images/experiences/fta.ico"
+		"dates": "January 2023 - Present",
+		"role": "Frontend Developer",
+		"company_link": "https://cakap.com/",
+		"company": "PT Cerdas Digital Nusantara (CAKAP)",
+		"company_profile": "Cakap is an upskilling platform in Indonesia with more than 4 million users spread throughout the country. We have over 2,000 teachers from 10 different countries",
+		"description": [
+			"Refactor code, profiling performance, and increase web apps performance by 20%.",
+			"Building state-of-the-art, easy-to-use, detail-oriented, and user-friendly web apps.",
+			"Created reusable code libraries, reducing development time for future projects by 30% and improving the development team's efficiency.",
+			"Researched integration of third-party services and APIs to add new functionalities, increasing user interaction.",
+			"Pioneered the development of creating a private library (Gitlab registry), resulting in to increase in process development by 20%."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": [
+			"AngularJs",
+			"ReactJs",
+			"NextJs"
+		]
 	},
 	{
-		"dates": "July 2015 · June 2018",
-		"role": "Front-end Engineer",
-		"company": "YOHO!",
-		"description": "Responsible for mobile front-end development of e-commerce platform.",
-		"logo": "/assets/images/experiences/yoho.ico"
+		"dates": "September 2020 - December 2022",
+		"role": "Frontend Developer",
+		"company_link": "https://bsi.uii.ac.id/",
+		"company": "Badan Sistem Informasi - Universitas Islam Indonesia",
+		"company_profile": "BSI UII is generally tasked with overseeing the planning, development, operations, and services of information systems and technology within the UII environment with many users reaching approximately 30,000.",
+		"description": [
+			"Mentored 2 junior developers in software development processes, increasing code quality and productivity.",
+			"Pioneered the development of architecture module federation and reduced build time production by 50%.",
+			"Pioneered the development of E2E testing using Cypress to reduce the time by 15% for manual testing by QA",
+			"Led the successful development of 4 Angular web applications, resulting in an increase of 40% in customer satisfaction.",
+			"Contributors to the private library for shared components, pipes, services, etc, resulting in a reduction of duplicate codes, redundancy components, and implementing component standardization, increasing process development by 20%.",
+			"Implemented accessibility best practices, improving the website's user experience for individuals with disabilities and earning the company recognition for its commitment to accessibility."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
 	},
 	{
-		"dates": "September 2014 · July 2015 ",
-		"role": "Node.JS Developer",
-		"company": "WuLian",
-		"description": "Intern, involved in the development of Internet of Things cloud systems.",
-		"logo": "/assets/images/experiences/wulian.ico"
+		"dates": "January 2020 - August 2020",
+		"role": "UI/UX Designer",
+		"company_link": "https://bsi.uii.ac.id/",
+		"company": "Badan Sistem Informasi - Universitas Islam Indonesia",
+		"company_profile": "BSI UII is generally tasked with overseeing the planning, development, operations, and services of information systems and technology within the UII environment with many users reaching approximately 30,000.",
+		"description": [
+			"Developed high-fidelity product designs and wireframes using design software like Figma, ensuring accuracy and clarity in visual representations.",
+			"Produced comprehensive documentation and manual books system to accompany product launches, outlining features, functionalities, and usage guidelines.",
+			"Leveraged animation techniques to convey loading progress effectively, maintaining user engagement and feedback during waiting periods.",
+			"Designed custom icons for menu applications, adhering to branding guidelines and visual consistency.",
+			"Developed design systems and component libraries within Figma to maintain consistency and efficiency across design iterations."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
+	},
+	{
+		"dates": "January 2019 - December 2019",
+		"role": "IT Support",
+		"company_link": "https://bsi.uii.ac.id/",
+		"company": "Badan Sistem Informasi - Universitas Islam Indonesia",
+		"company_profile": "BSI UII is generally tasked with overseeing the planning, development, operations, and services of information systems and technology within the UII environment with many users reaching approximately 30,000.",
+		"description": [
+			"Managed content and improved functionality of the https://bsi.uii.ac.id website using WordPress, ensuring timely updates and enhancements to meet organizational objectives.",
+			"Effectively addressed system complaints from stakeholders by communicating politely and calmly, ensuring their concerns were understood and resolved promptly to maintain positive relationships.",
+			"Conducted reinstallations of personal computers and laptops as needed, ensuring proper setup and configuration to meet user requirements and minimize downtime.",
+			"Designed and produced promotional materials such as flyers and posters to raise awareness of UIIAcademy and encourage knowledge sharing, contributing to the growth and engagement of the academic community."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
+	},
+	{
+		"dates": "July 2019 - December 2021",
+		"role": "WordPress Developer | Freelance",
+		"company_link": "https://wordpress.com/",
+		"company": "Wordpress",
+		"company_profile": "As a freelance WordPress developer, I don't have to rely on a company. So, every project has different requirements and specifications.",
+		"description": [
+			"Developed websites using WordPress, leveraging its user-friendly interface and customizable features to create dynamic and responsive web solutions.",
+			"Employed Elementor tools to efficiently design and customize website layouts, ensuring visually appealing and functional designs with minimal coding requirements.",
+			"Utilized Yoast SEO plugin to optimize website content for search engines, improving visibility and ranking in search engine results pages (SERPs) through keyword optimization and metadata management.",
+			"Implemented Google Analytics to track website traffic, analyze visitor behavior, and monitor key metrics such as page views, bounce rates, and popular blog topics, informing data-driven decisions and strategies."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
+	},
+	{
+		"dates": "August 2021 - October 2021",
+		"role": "Frontend Developer | Freelance",
+		"company_link": "https://www.kulkul.tech/",
+		"company": "Kulkul Technology",
+		"company_profile": "Kulkul Tech is a technology-based company aiming to democratize high-quality software engineering. We help IT decision-makers, project managers, and product owners to take technology usage to the next level.",
+		"description": [
+			"Designed and implemented a well-structured project architecture that prioritizes scalability and maintainability, enabling seamless integration of new features and future expansions.",
+			"Integrated APIs with backend systems to facilitate seamless data communication and interaction, ensuring reliable data exchange and synchronization between frontend and backend components.",
+			"Developed a frontend system tailored to the needs of a gas mining project, incorporating industry-specific functionalities and addressing project requirements with precision and efficiency."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
+	},
+	{
+		"dates": "March 2021 - May 2021",
+		"role": "Frontend Developer | Freelance",
+		"company_link": "https://www.loker.id/profile/manusia-tech",
+		"company": "Manusia Technology",
+		"company_profile": "Manusia Tech is a leading provider of Human Resources Information Systems (HRIS), dedicated to empowering organizations with technology solutions to optimize HR operations and enhance employee experiences.",
+		"description": [
+			"Identified and resolved software bugs and issues within existing features, ensuring product stability and reliability through thorough debugging and testing.",
+			"Integrated APIs with backend systems to establish seamless data communication and synchronization, facilitating efficient exchange of information between frontend and backend components.",
+			"Developed front-end interfaces for HR systems, incorporating functionalities such as employee management, payroll processing, and performance evaluation to streamline HR operations."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
+	},
+	{
+		"dates": "October 2017 - December 2017",
+		"role": "Network Technician | Student Internship",
+		"company_link": "https://telkomakses.co.id/",
+		"company": "PT Telkom Akses",
+		"company_profile": "PT Telkom Akses is a subsidiary of PT Telkom Indonesia (Persero) Tbk, focusing on telecommunications access services. It specializes in developing telecommunication infrastructure, including fiber optic and wireless networks, to provide reliable connectivity to customers and the general public.",
+		"description": [
+			"Participated in a 3-month internship program at PT. Telkom Access as part of the SMK N 2 Yogyakarta curriculum.",
+			"Acquired hands-on experience in various aspects of telecommunications, including fiber optic splicing, installation of Indihome internet connections, and providing help desk support.",
+			"Developed a strong understanding of internet networks and telecommunications infrastructure, including knowledge of ODP, ODC, splicer, and fiber optic technology.",
+			"Demonstrated ability to perform network maintenance and troubleshooting to resolve errors and address natural factors affecting network performance.Demonstrated ability to perform network maintenance and troubleshooting to resolve errors and address natural factors affecting network performance."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": []
 	}
 ]

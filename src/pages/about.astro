@@ -30,29 +30,20 @@ import Layout from "../layouts/main.astro";
     </h2>
     <div class="px-5 py-10">
       {
-        experiences.map((experience, loop) => {
+        experiences.map((experience, idx) => {
           return (
-            <>
-              {loop == 0 || loop == 1 ? (
-                <div class="pb-10 border-l border-gray-200 dark:border-neutral-700">
+                <div class={`pb-10 ${idx === experiences.length - 1 ? '' : 'border-l border-gray-200'} dark:border-neutral-700`}>
                   <AboutExperience
                     dates={experience.dates}
                     role={experience.role}
                     company={experience.company}
+                    company_profile={experience.company_profile}
                     description={experience.description}
                     logo={experience.logo}
+                    techstacks={experience.techstacks}
+                    company_link={experience.company_link}
                   />
                 </div>
-              ) : (
-                <AboutExperience
-                  dates={experience.dates}
-                  role={experience.role}
-                  company={experience.company}
-                  description={experience.description}
-                  logo={experience.logo}
-                />
-              )}
-            </>
           )
         })
       }
