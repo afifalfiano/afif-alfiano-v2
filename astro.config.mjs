@@ -25,5 +25,8 @@ export default defineConfig({
 	output: 'server',
   adapter: vercel({
     isr: true,
+    webAnalytics: {
+      enabled: true,
+    },
   }),
 });
