@@ -22,6 +22,8 @@ export default defineConfig({
     }),
 	],
   site: 'https://afifalfiano.my.id',
-	output: 'static',
-  adapter: vercelStatic(),
+	output: 'server',
+  adapter: vercel({
+    isr: true,
+  }),
 });
