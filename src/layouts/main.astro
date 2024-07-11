@@ -1,5 +1,6 @@
 ---
 import Footer from "../components/footer.astro";
+import GoogleAnalytics from "../components/google-analytics.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
 const { title } = Astro.props;
@@ -10,6 +11,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <GoogleAnalytics measurementId={'G-DZF7W2XZGC'} />
     <title>{title}</title>
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
@@ -31,30 +33,9 @@ const { title } = Astro.props;
     </style>
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png" />
     <script src="../assets/css/main.css"></script>
-    <!-- Google Tag Manager -->
-
-    <!-- <script type="text/partytown">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TT2SJFJJ');</script> -->
-
-      <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=GTM-TT2SJFJJ"></script>
-      <script is:inline type="text/partytown">
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-    
-        gtag('config', 'GTM-TT2SJFJJ');
-      </script>
-    <!-- End Google Tag Manager -->
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>
   <body class="antialiased bg-white dark:bg-neutral-950">
-    <!-- Google Tag Manager (noscript) -->
-    <!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TT2SJFJJ"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
-    <!-- End Google Tag Manager (noscript) -->
     <SquareLines />
     <Header />
     <slot />
