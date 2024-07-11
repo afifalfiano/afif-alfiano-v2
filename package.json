@@ -12,6 +12,7 @@
 	},
 	"devDependencies": {
 		"@astrojs/check": "^0.6.0",
+		"@astrojs/partytown": "^2.1.1",
 		"@astrojs/tailwind": "^5.1.0",
 		"@biomejs/biome": "1.7.3",
 		"@tailwindcss/typography": "^0.5.13",
