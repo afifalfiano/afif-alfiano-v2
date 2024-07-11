@@ -24,7 +24,6 @@ export default defineConfig({
   site: 'https://afifalfiano.my.id',
 	output: 'static',
   adapter: vercel({
-    isr: true,
     webAnalytics: {
       enabled: true,
     },
