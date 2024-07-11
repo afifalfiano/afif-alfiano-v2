@@ -39,8 +39,8 @@ const { title } = Astro.props;
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-TT2SJFJJ');</script> -->
 
-      <script type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=GTM-TT2SJFJJ"></script>
-      <script type="text/partytown">
+      <script is:inline type="text/partytown" src="https://www.googletagmanager.com/gtag/js?id=GTM-TT2SJFJJ"></script>
+      <script is:inline type="text/partytown">
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
