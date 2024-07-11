@@ -3,7 +3,7 @@ import Footer from "../components/footer.astro";
 import GoogleAnalytics from "../components/google-analytics.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -11,6 +11,8 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <GoogleAnalytics measurementId={'G-DZF7W2XZGC'} />
     <title>{title}</title>
 
