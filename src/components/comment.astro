@@ -1,0 +1,30 @@
+---
+
+---
+
+<div class="w-full">
+    <div id="utteranc"></div>
+    <script>
+      function showUtterancComment() {
+      const element = document.getElementById('utteranc');
+      if (element) {
+        const scriptElement = document.createElement('script')
+        scriptElement.setAttribute('src', 'https://utteranc.es/client.js')
+        scriptElement.setAttribute('repo', 'afifalfiano/afif-alfiano-v2')
+        scriptElement.setAttribute('issue-term', 'pathname')
+        scriptElement.setAttribute('theme', 'github-dark-orange')
+        scriptElement.setAttribute('crossorigin', 'anonymous')
+        scriptElement.setAttribute('async', 'true')
+        element.replaceChildren(scriptElement)
+      }
+    }
+
+    showUtterancComment();
+    </script>
+</div>
+
+<style>
+  .prose {
+    @apply max-w-none;
+  }
+</style>

@@ -4,6 +4,15 @@ import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
+
+const canHelpTech = [
+  {tech: "Angular.js", class: 'from-cyan-500 to-blue-600'},
+  {tech: "React.js", class: 'from-violet-300 to-fuchsia-600'},
+  {tech: "Next.js", class: 'from-sky-500 to-indigo-600'},
+  {tech: "Laravel", class: 'from-purple-300 to-pink-600'},
+  {tech: "Website Design", class: 'from-sky-400 to-indigo-600'},
+  {tech: "and more..", class: 'from-blue-300 to-indigo-600'}
+]
 ---
 
 <Layout title="Afif Alfiano">
@@ -26,17 +35,13 @@ import Layout from "../layouts/main.astro";
         <p class="mb-2 font-semibold text-neutral-800 dark:text-neutral-200">
           I can help you out with:
         </p>
-        <ul
-          class="py-2 space-y-[3px] text-sm list-disc list-inside text-neutral-500 dark:text-neutral-400"
-        >
-          <li>Angular.js</li>
-          <li>React.js</li>
-          <li>Next.js</li>
-          <li>Vue.js 2</li>
-          <li>Laravel</li>
-          <li>Website Design</li>
-          <li>and more...</li>
-        </ul>
+        <div class="w-full flex flex-wrap">
+        {canHelpTech.map(item => {
+          return (
+            <span class=`text-sm text-neutral-200 dark:text-neutral-200 me-2 mb-2 rounded-full bg-gradient-to-br ${item.class} py-1 px-2`>{item.tech}</span>
+          )
+        })}
+        </div>
         <Button text="Follow me on LinkedIn" link="https://www.linkedin.com/in/afifalfiano/" />
       </div>
       <div
