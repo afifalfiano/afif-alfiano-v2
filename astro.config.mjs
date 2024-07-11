@@ -1,8 +1,8 @@
 import { defineConfig } from "astro/config";
-import vercelStatic from '@astrojs/vercel/static';
 import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
 import sitemap from '@astrojs/sitemap';
+import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
