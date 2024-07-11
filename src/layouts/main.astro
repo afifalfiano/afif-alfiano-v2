@@ -15,6 +15,12 @@ const { title, description } = Astro.props;
     <link rel="sitemap" href="/sitemap-index.xml" />
     <GoogleAnalytics measurementId={'G-DZF7W2XZGC'} />
     <title>{title}</title>
+    <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Afif Alfiano"
+    href={new URL("rss.xml", Astro.site)}
+/>
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script is:inline>
