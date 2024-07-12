@@ -3,7 +3,13 @@ import Footer from "../components/footer.astro";
 import GoogleAnalytics from "../components/google-analytics.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
+import { SEO } from "astro-seo";
+import { getImagePath } from "astro-opengraph-images";
+
 const { title, description } = Astro.props;
+const { url, site } = Astro;
+const openGraphImageUrl = getImagePath({ url, site });
+
 ---
 
 <!doctype html>
@@ -11,7 +17,6 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <GoogleAnalytics measurementId={'G-DZF7W2XZGC'} />
     <title>{title}</title>
@@ -19,8 +24,40 @@ const { title, description } = Astro.props;
     rel="alternate"
     type="application/rss+xml"
     title="Afif Alfiano"
-    href={new URL("rss.xml", Astro.site)}
-/>
+    href={new URL("rss.xml", Astro.site)}/>
+    <SEO
+      title={title}
+      description={description}
+      twitter={{
+        creator: "@alfianoano_8"
+      }}
+      openGraph={
+        {
+          basic: {
+            title: title,
+            type: "website",
+            image: openGraphImageUrl,
+            url: url,
+          },
+          optional: {
+            description: description
+          }
+        }
+      }
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", href: "/favicon.ico" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: openGraphImageUrl,
+          },
+          { name: "twitter:title", content: title },
+          { name: "twitter:description", content: description },
+        ],
+      }}
+    />
 
     <!-- Used to add dark mode right away, adding here prevents any flicker -->
     <script is:inline>
