@@ -4,7 +4,7 @@ import Layout from "./main.astro";
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title} description={frontmatter.description}>
+<Layout title={frontmatter.title} description={frontmatter.description} ogGraph={frontmatter.ogImage.url}>
   <main class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900" 
   >
     <div

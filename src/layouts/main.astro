@@ -6,10 +6,9 @@ import SquareLines from "../components/square-lines.astro";
 import { SEO } from "astro-seo";
 import { getImagePath } from "astro-opengraph-images";
 
-const { title, description } = Astro.props;
+const { title, description, ogGraph } = Astro.props;
 const { url, site } = Astro;
 const openGraphImageUrl = getImagePath({ url, site });
-
 ---
 
 <!doctype html>
@@ -36,7 +35,7 @@ const openGraphImageUrl = getImagePath({ url, site });
           basic: {
             title: title,
             type: "website",
-            image: openGraphImageUrl,
+            image: ogGraph || openGraphImageUrl,
             url: url,
           },
           optional: {
@@ -51,7 +50,7 @@ const openGraphImageUrl = getImagePath({ url, site });
         meta: [
           {
             name: "twitter:image",
-            content: openGraphImageUrl,
+            content: ogGraph || openGraphImageUrl,
           },
           { name: "twitter:title", content: title },
           { name: "twitter:description", content: description },
