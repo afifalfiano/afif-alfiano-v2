@@ -9,7 +9,7 @@ author:
 ogImage:
   url: '/assets/blog/14.bazel/1.header.jpeg'
 wordCount: 836
-
+status: published
 ---
 
 Setelah proses panjang menginstall bazel di angular, maka kita lanjut ke proses mengunggah source code ke github dan menghubungkan ke azure untuk dilakukan proses deployment.

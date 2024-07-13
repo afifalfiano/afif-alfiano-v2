@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/5.first-pull-request/1.header.jpeg'
 wordCount: 792
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Gimana rasanya ketika pertama kali pull requestmu di setuju oleh pemilik project? pasti senang bukan. Pull request adalah sebuah metode dimana kita meminta pemilik kode master untuk mereview tambahan kode kita dan jika disetujui bisa dimerge atau digabung ke master kode tersebut. Nah, inilah yang saya rasakan sekitar 2 minggu yang lalu dan pada artikel kali ini saya ingin berbagi cerita bagaimana pull request saya untuk berkontribusi di open source bisa disetujui yang pada akhirnya dimerge ke master.

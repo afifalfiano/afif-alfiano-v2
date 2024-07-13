@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/22.reactjs-state/1.header-fix.png'
 wordCount: 953
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Halooo, ketemu lagi kita pada artikel baru yang masih berkutat seputar react javascript. Nah pada kesempatan kali ini kita akan belajar bersama-sama mengenai state pada reactjs. Sebelumnya apakah teman-teman tau apa itu state pada reactjs?

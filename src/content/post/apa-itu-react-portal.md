@@ -10,8 +10,8 @@ ogImage:
   url: '/assets/blog/19.reactjs-portal/1.header.png'
 wordCount: 610
 layout: ../../layouts/post.astro
+status: published
 ---
-
 Selamat datang kembali teman-teman, pada kesempatan kali ini kita akan mempelajari salah satu fitur dari react yang bernama react portal. Jika kita lihat dari dokumentasinya (https://reactjs.org/docs/portals.html) maka pengertian react portal adalah Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
 
 Pada intinya, react portal befungsi untuk merender sebuah child komponen diluar hirarki DOM dari parent komponen. Contohnya seperti ini, bisanya untuk merender komponen app.js kita mengambil element id root, nah dengan react portal kita dapat keluar dari hirarki id root tersebut. Mari kita langsung mencoba.

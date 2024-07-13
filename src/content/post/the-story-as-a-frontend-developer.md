@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/6.story-fe/1.header.jpeg'
 wordCount: 314
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Hello, this is my first blog in English. So, if there is something wrong in my blog, I would say sorry.

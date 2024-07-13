@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/1.menulis-kenapa-tidak/header.jpg'
 wordCount: 566
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat malam teman-teman, Bagaimana kabarnya? Semoga selalu dalam keadaan sehat dan selalu diberi kemudahan. Tetap semangat ya walaupun dalam keadaan seperti ini. Semoga wabah corona virus ini segera berakhir dan kita bisa kembali normal seperti sediakala. Oke, langsung saja kembali ketopik awal dan mungkin tulisan ini akan sangat membosankan karena saya hanya ingin bercerita, haha 😂. Oiya mohon maaf ya kalau tulisan ini tidak sebagus tulisan yang sebelumnya pernah teman-teman baca. Tapi tidak apa apa, kalau harus menunggu yang bagus dan sempurna, nggak akan ada istilah tulisan pertama dan akhirnya kita nggak jadi berkarya.

@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/3.journey/1.header.jpg'
 wordCount: 1278
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Pada artikel kali ini saya akan sharing pengalaman saya dari seorang it support menjadi seorang development team. Sebelumnya saya akan bercerita tentang latar belakang saya. Saya adalah seorang pelajar lulusan `<a href="http://www.smk2-yk.sch.id/">`SMK N 2 Yogykarta(STM Jetis 1)`</a>` jurusan teknik komputer jaringan pada tahun 2018. Setelah lulus dari smk, saya tidak langsung bekerja. Alasannya karena ingin menjadi seorang pengusaha, jadi masih idealislah dulu hehe. Jadi selama 6 bulan setelah lulus itu saya mulai berkecimpung di dunia bisnis, yaitu jual beli produk kesehatan dan fokus mempelajari digital marketing dari mulai membuat kontent `<a href="https://en.wikipedia.org/wiki/Copywriting#:~:text=Copywriting%20is%20the%20act%20or,to%20take%20a%20particular%20action.">`copywriting`</a>`, gambar, website, iklan dan analisis trafik website penjualan.

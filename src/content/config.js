@@ -14,7 +14,8 @@ const postCollection = defineCollection({
 		}),
 		ogImage: z.object({
 			url: z.string(),
-		})
+		}),
+		status: z.string()
 	}),
 });
 

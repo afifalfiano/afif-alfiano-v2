@@ -5,11 +5,11 @@ const allPosts = await getCollection("post");
 const { count } = Astro.props;
 
 const postsLoop = allPosts.slice(0, count).map((post) => {
-	return {
+  return {
 		...(post.data || {}),
 		link: `/post/${post.slug}`,
 	};
-});
+}).filter(item => item.status === 'published').sort((a, b) => (new Date(b.dateFormatted).getTime() - new Date(a.dateFormatted).getTime()));
 ---
 
 {

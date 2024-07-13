@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/18.reactjs/5.default-view.png'
 wordCount: 2817
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat datang kembali teman-teman di blog saya. Pada kesempatan kali ini kita akan belajar hal baru yaitu belajar reactjs. Dimana jika pada artikel-artikel sebelumnya saya selalu menggunakan angular, kali ini kita akan menggunakan reactjs dengan membuat aplikasi todolist yang tidak hanya sekedar crud aplikasi saja. Karena tidak sah rasanya ketika kita belajar suatu hal tidak dimulai dengan todolist. Hehe

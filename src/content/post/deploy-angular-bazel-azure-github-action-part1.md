@@ -10,7 +10,7 @@ ogImage:
   url: '/assets/blog/14.bazel/1.header.jpeg'
 wordCount: 836
 layout: ../../layouts/post.astro
-
+status: published
 ---
 
 Ketika kita mengembangkan suatu aplikasi tentunya kita membutuhkan tempat supaya aplikasi dapat digunakan orang banyak, tidak hanya localhost atau hanya ada dikomputer pribadi.

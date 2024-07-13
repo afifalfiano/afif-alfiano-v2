@@ -11,6 +11,7 @@ ogImage:
 tag: reactjs
 wordCount: 610
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat datang kembali teman-teman. Pada kesempatan kali ini kita masih belajar mengenai react khususnya tentang component dan props. Kalau teman-teman ingin bisa menggunakan react js maka sudah satu hal yang wajib tahu tentang hal ini. Pada artikel ini dan seterusnya perlu teman-teman ketahui kita akan menggunakan function component bukan class component. Karena saya lebih nyaman menggunakan function component, hehe

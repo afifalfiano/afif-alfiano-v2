@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/12.forms/1.header.jpeg'
 wordCount: 950
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Karena minggu kemarin saya tidak sempat membuat artikel, maka akan saya ganti dengan minggu ini. Apa yang teman-teman pikirkan ketika pertama kali mendengar forms? apakah mengisi sebuah kolom? atau harus manual dengan cara menulis? Nah, pada kesempatan kali ini saya akan membahas tentang form.

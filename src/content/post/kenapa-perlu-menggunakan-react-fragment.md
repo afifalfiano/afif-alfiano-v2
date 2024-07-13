@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/20.reactjs-fragments/1.header.png'
 wordCount: 641
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat sore teman-teman. Pada kesempatan kali ini kita akan bersama-sama mempelajari tentang fragments. Nah sebelum kita masuk ke topik tentang fragment kita cari dulu permasalahannya. Kalau teman-teman sadari setiap komponen pada react pasti mereturn sebuah elemen baik yang murni elemen atau sudah berbentuk komponen. Karena salah satu requirement reactjs untuk membuat komponen adalah return satu root komponen bisa dibungkus dengan div, wrapper atau komponen lainnya. Contohnya seperti ini

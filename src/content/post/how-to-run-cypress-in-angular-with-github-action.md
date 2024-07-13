@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/25.angular-cypress/26.monitoring.png'
 wordCount: 1113
 layout: ../../layouts/post.astro
+status: published
 ---
 
 ### Introduction

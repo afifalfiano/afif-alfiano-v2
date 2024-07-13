@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/15.husky/1.header.png'
 wordCount: 496
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Pernahkan teman-teman mendengar istilah commit conventional? Jika belum mari kita pelajari bersama - sama apa itu commit convetinoal dan bagaimana mengautomate commit menggunakan husky untuk automate commit linter, baik untuk javascript, typescript, css ataupun scss.

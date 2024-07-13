@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/9.hosting-gh/1.header.jpeg'
 wordCount: 836
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat Pagi, Gimana kabar teman-teman? semoga selalu dalam keadaan baik-baik saja. Pada kesempatan kali ini saya ingin membahas bagaimana cara hosting di github pages secara otomatisasi. Jadi kita tidak perlu susah-susah mengupload file hasil build project kita ke github pages.

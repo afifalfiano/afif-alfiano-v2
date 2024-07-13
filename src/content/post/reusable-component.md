@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/8.reusable/1.header.jpeg'
 wordCount: 738
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Haloooo! Gimana kabar teman-teman? Maaf ya sudah 3 minggu lebih tidak ada artikel sama sekali. Oke, jadi pada kesempatan kali ini saya ingin berbagi ilmu tentang web component.

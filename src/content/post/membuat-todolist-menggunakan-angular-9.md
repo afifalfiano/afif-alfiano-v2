@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/13.todolist/1.header.png'
 wordCount: 847
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat sore teman-teman. Yap, kali ini saya ingin berbagi sedikit pengetahuan tentang salah satu framework javascript yang cukup popular, yaitu Angular. Sebelumnya apakah teman-teman sudah mengetahui apa itu angular? kalau belum mengetahui izinkan saya membantu menjelaskan, singkatnya seperti ini Angular adalah framework javascript yang dibuat oleh google untuk memenuhi kebutuhan pasar terutama yang menangani aplikasi besar menggunakan bahasa typescript yang dibuat oleh microsoft. Jika masih penasaran mengenai angular bisa langsung kunjungi situs resimnya disini https://angular.io/

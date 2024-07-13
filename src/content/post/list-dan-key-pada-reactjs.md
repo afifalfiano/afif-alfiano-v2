@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/23.reactjs-list/header-fix.png'
 wordCount: 667
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Selamat datang kembali teman-teman, pada kesempatan kali ini kita akan mempelajari list pada react javascript. Nah seperti teman-teman ketahui bahwa list bukan tipe data melainkan lebih ke sebuah data yang memerlukan perulangan untuk menjadi sebuah element html misalkan berupa list atau yang lainnya. Contohnya kita mempunyai data sepert ini ``[1,2,3,4,5]`` , Nah kita dapat merender data array tersebut menjadi list seperti ini

@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/11.jquery/1.header.png'
 wordCount: 496
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Apa yang teman-teman pikirkan ketika ingin menggunakan animasi? Pasti menggunakan javascript nih kalau nggak menggunakan jquery. Lah apa bedanya javascript dengan jquery haha. Intinya jquery itu library yang diisi menggunakan javascript

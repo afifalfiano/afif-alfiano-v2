@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/17.cypress/cover.png'
 wordCount: 1639
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Pada kesempatan kali ini kita akan belajar bersama-sama bagaimana cara menggunakan cypress di angular lengkap dari awal sampai akhir. Pada tutorial ini juga kita akan menggunakan real API dari backend dan data disimpan di database (SQLite). Langsung saja cek tutorial berikut ini.

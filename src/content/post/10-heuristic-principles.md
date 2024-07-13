@@ -10,15 +10,15 @@ ogImage:
   url: '/assets/blog/2.10-heuristic-principles/header.jpg'
 wordCount: 1639
 layout: ../../layouts/post.astro
+status: published
 ---
-
 Sepertinya akhir-akhir bidang UI/UX sedang diminati banyak orang. Apakah teman-teman pernah mendengar istilah heuristik? atau mendengar istilah UX? saya yakin kalo istilah UX pasti sudah familiar ya, tapi bagaimana dengan heuristik? kalau belum familiar mari kita pelajari topik ini secara bersama-sama. Heuristik dikutip dari wikipedia bunyinya seperti berikut ini:
 
 <blockquote style="padding-top:10px;padding-bottom:10px;"><strong><em>Heuristic is any approach to problem solving or self-discovery that employs a practical method that is not guaranteed to be optimal, perfect or rational, but which is nevertheless sufficient for reaching an immediate, short-term goal.</em></strong></blockquote>
 
 Heuristik merupakan salah satu metode untuk memecahkan sebuah masalah terhadap produk yang telah kita buat. Namun metode ini bisa jadi tidak maksimal karena riset dilakukan oleh seorang user experience bukan user asli atau pengguna.
 
-Konsep ini berkaitan erat dengan dunia UX dan saya mengambil referensi dari `<a href="https://www.nngroup.com/">`Nielsen Norman Group`</a>`. Teman-teman jika ingin mempelajari seputar UX bisa langsung menuju ke channel youtubenya NNGroup, saya pastikan apa yang teman-teman tonton ga bakalan sia-sia. Oke langsung saja kita bahas satu per satu apa saja 10 prinsip dari konsep heuristic ini:
+Konsep ini berkaitan erat dengan dunia UX dan saya mengambil referensi dari `<a href="https://www.nngroup.com/">`Nielsen Norman Group `</a>`. Teman-teman jika ingin mempelajari seputar UX bisa langsung menuju ke channel youtubenya NNGroup, saya pastikan apa yang teman-teman tonton ga bakalan sia-sia. Oke langsung saja kita bahas satu per satu apa saja 10 prinsip dari konsep heuristic ini:
 
 ### 1. Visibility the system status
 
@@ -100,7 +100,7 @@ Semoga bermanfaat 😁
 
 Setuju ya? Oke, lanjut…
 
-Nah, tujuan saya menulis story ini adalah karena `<strong>`saya kangen nulis lagi`</strong>`. Maksudnya? Jadi ceritanya begini, 2 tahun yang lalu ketika saya belum bekerja dan masih berjualan online, Saya sangat senang menulis disalah satu platform social media yaitu `<strong>`facebook`</strong>`. Tujuannya apa? selain menebarkan kebaikan saya juga ingin mengasah skill copywriting. Kalau teman-teman ingin mengecek tulisan saya yang ada copywritingnya bisa dicek disini `<a href="https://www.facebook.com/alfiano.hermasyah" target="blank">`afifalfiano`</a>` , sekalian promosi , hehe 😁
+Nah, tujuan saya menulis story ini adalah karena `<strong>`saya kangen nulis lagi `</strong>`. Maksudnya? Jadi ceritanya begini, 2 tahun yang lalu ketika saya belum bekerja dan masih berjualan online, Saya sangat senang menulis disalah satu platform social media yaitu `<strong>`facebook `</strong>`. Tujuannya apa? selain menebarkan kebaikan saya juga ingin mengasah skill copywriting. Kalau teman-teman ingin mengecek tulisan saya yang ada copywritingnya bisa dicek disini `<a href="https://www.facebook.com/alfiano.hermasyah" target="blank">`afifalfiano `</a>` , sekalian promosi , hehe 😁
 
 2 tahun yang lalu merupakan masa produktif menulis online, dimana dalam sehari bisa menulis sampai 5 kali. Walaupun nggak panjang-panjang tapi sudah cukup untuk melatih dan mengasah skill copywriting. Yap, memang harus seperti itu. Untuk bisa melatih suatu skill kita nggak bisa cuma baca teorinya saja, harus dibarengi dengan usaha dan kerja keras serta jangan lupa untuk berdoa.
 

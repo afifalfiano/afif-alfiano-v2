@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/16.collaborative/cover.jpg'
 wordCount: 350
 layout: ../../layouts/post.astro
+status: published
 ---
 
 In this blog or article, I'm going to tell a story about my collaborative experience in a working environment.

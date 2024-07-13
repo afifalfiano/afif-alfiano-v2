@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/24.reactjs-efek/fix-header.png'
 wordCount: 889
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Halo teman-teman, kembali lagi nih di blog pribadi saya dimana pada kesempatan kali ini kita akan mempelajari tentang use effect pada react javascript. Nah sebenarnya apa sih kegunaan use effect itu?

@@ -10,6 +10,7 @@ ogImage:
   url: '/assets/blog/7.lazy-load-angular/1.header.jpeg'
 wordCount: 1171
 layout: ../../layouts/post.astro
+status: published
 ---
 
 Haloo teman-teman. Bagaiamana akhir pekannya? Pergi refreshing apa tetap di depan laptop atau komputer 😅. Apapun itu selagi kegiatannya positif maka tidak perlu diperdebatkan, oke.

@@ -10,4 +10,5 @@ ogImage:
   url: '/assets/images/no-images.jpg'
 wordCount: 610
 layout: ../../layouts/post.astro
+status: draft
 ---
