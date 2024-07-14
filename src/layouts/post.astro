@@ -1,6 +1,10 @@
 ---
+import { OPTIONS } from "../common/constant";
 import Comment from "../components/comment.astro";
+import { wordCount } from "../helpers";
 import Layout from "./main.astro";
+import { Image } from 'astro:assets';
+
 const { frontmatter } = Astro.props;
 ---
 
@@ -19,13 +23,45 @@ const { frontmatter } = Astro.props;
       >
       </div>
       <h1
-        class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-12 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none"
+        class="w-full max-w-2xl mx-auto text-3xl font-bold leading-tight tracking-tighter text-left md:mb-6 md:text-4xl dark:text-neutral-100 lg:text-5xl md:leading-none"
       >
         {frontmatter.title}
       </h1>
     </div>
-    <div class="w-full max-w-2xl mx-auto my-7 lg:mt-0 px-7 lg:px-0">
-      <img src={frontmatter.coverImage} class="w-full rounded-xl"/>
+
+    <div class="w-full max-w-2xl mx-auto lg:mt-0 px-7 lg:px-0 mt-4 md:mt-0">
+      <div class="flex justify-start align-middle">
+        <div class="w-auto">
+          <Image 
+          src={frontmatter.author.picture}
+          alt={frontmatter.author.name}
+          width="50" 
+          height="50"
+          decoding="auto"
+          loading="lazy"
+          class="rounded-full"
+          />
+        </div>
+        <div class="pl-2">
+          <p class="text-base font-medium text-neutral-600 dark:text-neutral-300">{frontmatter.author.name}</p>
+          <p class="text-base font-normal text-neutral-500 dark:text-neutral-300">
+            Posted on {new Date(frontmatter.dateFormatted).toLocaleDateString('en-US', OPTIONS)} <span class="font-normal ml-1">({wordCount(frontmatter.wordCount)} min read)</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-full max-w-2xl mx-auto my-8 px-7 lg:px-0">
+      <Image 
+        src={frontmatter.coverImage}
+        alt={frontmatter.title}
+        width="20" 
+        height="20"
+        decoding="auto"
+        loading="lazy"
+        class="w-full rounded-xl"
+        />
     </div>
 
     <article

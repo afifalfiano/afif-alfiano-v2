@@ -4,6 +4,7 @@ import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
+import { Image } from 'astro:assets';
 
 const canHelpTech = [
   {tech: "Angular.js", class: 'from-cyan-500 to-blue-600'},
@@ -61,13 +62,15 @@ const canHelpTech = [
             </span>
           </div>
           <div class="relative z-30 ps-5">
-            <img
-              src="/assets/images/afif-cartoons.png"
-              loading="eager"
-              decoding="auto"
-              class="relative z-30 w-full  bottom-20 md:max-w-md mx-auto dark:-translate-y-0.5"
+            <Image 
+              src="/assets/images/afif-cartoons.png" 
               alt="Afif Alfiano"
-            />
+              width="50" 
+              height="50"
+              decoding="auto"
+              loading="eager"
+              class="relative z-30 w-full  bottom-20 md:max-w-md mx-auto dark:-translate-y-0.5"
+              />
           </div>
           <div
             class="absolute bottom-20 right-0 z-20 w-full h-full lg:h-[330px] translate-x-0 -translate-y-px border border-dashed rounded-2xl bg-gradient-to-r dark:from-neutral-950 dark:via-black dark:to-neutral-950 from-white via-neutral-50 to-white border-neutral-300 dark:border-neutral-700"
