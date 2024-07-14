@@ -129,7 +129,7 @@ After that, just run the program again on the you’ll the result like this.
 
 <img src="/assets/blog/golang-hello-world/random-quote.png" alt="Random Quote" class="img img-responsive mb-3" style="width: 100%; border-radius: 5px;" >
 
-Okeee, that’s all the introduction for hello world on the golang.
+Okeee, that’s all the introduction for hello world in golang.
 
 ### References
 
