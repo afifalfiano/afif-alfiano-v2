@@ -4,11 +4,13 @@ import GoogleAnalytics from "../components/google-analytics.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
 import { SEO } from "astro-seo";
-import { getImagePath } from "astro-opengraph-images";
+// import { getImagePath } from "astro-opengraph-images";
 
 const { title, description, ogGraph } = Astro.props;
 const { url, site } = Astro;
-const openGraphImageUrl = getImagePath({ url, site });
+// const openGraphImageUrl = getImagePath({ url, site });
+const contentOgGraph = site?.hostname + ogGraph;
+const defaultOgGraph = site?.hostname + '/assets/new-afif.jpeg'
 ---
 
 <!doctype html>
@@ -35,7 +37,7 @@ const openGraphImageUrl = getImagePath({ url, site });
           basic: {
             title: title,
             type: "website",
-            image: ogGraph || openGraphImageUrl,
+            image: contentOgGraph || defaultOgGraph,
             url: url,
           },
           optional: {
@@ -50,7 +52,7 @@ const openGraphImageUrl = getImagePath({ url, site });
         meta: [
           {
             name: "twitter:image",
-            content: ogGraph || openGraphImageUrl,
+            content: contentOgGraph || defaultOgGraph,
           },
           { name: "twitter:title", content: title },
           { name: "twitter:description", content: description },
