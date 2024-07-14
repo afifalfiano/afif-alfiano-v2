@@ -1,25 +1,23 @@
 ---
 
 ---
-
 <div class="w-full">
-    <div id="utteranc"></div>
-    <script is:inline>
-      function showUtterancComment() {
-      const element = document.getElementById('utteranc');
-      if (element) {
-        const scriptElement = document.createElement('script')
-        scriptElement.setAttribute('src', 'https://utteranc.es/client.js')
-        scriptElement.setAttribute('repo', 'afifalfiano/afif-alfiano-v2')
-        scriptElement.setAttribute('issue-term', 'pathname')
-        scriptElement.setAttribute('theme', 'github-dark-orange')
-        scriptElement.setAttribute('crossorigin', 'anonymous')
-        scriptElement.setAttribute('async', 'true')
-        element.replaceChildren(scriptElement)
-      }
-    }
-
-    showUtterancComment();
+    <section class="giscus mx-auto mt-10 w-full"></section>
+    <script is:inline src="https://giscus.app/client.js"
+        data-repo="afifalfiano/afif-alfiano-v2"
+        data-repo-id="R_kgDOMUQ3qw"
+        data-category="Show and tell"
+        data-category-id="DIC_kwDOMUQ3q84Cgxi0"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="dark_tritanopia"
+        data-lang="en"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
     </script>
 </div>
 
