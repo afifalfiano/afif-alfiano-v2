@@ -9,8 +9,8 @@ import { SEO } from "astro-seo";
 const { title, description, ogGraph } = Astro.props;
 const { url, site } = Astro;
 // const openGraphImageUrl = getImagePath({ url, site });
-const contentOgGraph = site?.hostname + ogGraph;
-const defaultOgGraph = site?.hostname + '/assets/new-afif.jpeg'
+const contentOgGraph = site?.origin + ogGraph;
+const defaultOgGraph = site?.origin + '/assets/new-afif.jpeg'
 ---
 
 <!doctype html>
