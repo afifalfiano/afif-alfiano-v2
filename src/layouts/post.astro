@@ -24,6 +24,9 @@ const { frontmatter } = Astro.props;
         {frontmatter.title}
       </h1>
     </div>
+    <div class="w-full max-w-2xl mx-auto my-7 lg:mt-0 px-7 lg:px-0">
+      <img src={frontmatter.coverImage} class="w-full rounded-xl"/>
+    </div>
 
     <article
       class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert"
