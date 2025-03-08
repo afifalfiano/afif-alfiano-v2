@@ -1,6 +1,6 @@
 [
 	{
-		"name": "Monitor Subsription",
+		"name": "Monitor Subscription",
 		"description": "A simple lilbrary to monitoring data observable on Angular.",
 		"image": "/assets/images/no-images.jpg",
 		"url": "https://github.com/afifalfiano/monitor-subscription"
