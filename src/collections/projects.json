@@ -1,9 +1,27 @@
 [
 	{
+		"name": "Monitor Subsription",
+		"description": "A simple lilbrary to monitoring data observable on Angular.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://github.com/afifalfiano/monitor-subscription"
+	},
+	{
 		"name": "Filter Ticket",
 		"description": "Handle complain from customer and used by company which focuses on internet service provider.",
 		"image": "/assets/images/no-images.jpg",
 		"url": "https://github.com/afifalfiano/filter-ticket"
+	},
+	{
+		"name": "Pokedex",
+		"description": "The hybrid (android, ios and web) application to showing list of pokemon and get detail.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://github.com/afifalfiano/pokedex"
+	},
+	{
+		"name": "Nano TIA",
+		"description": "Web apps cloning of TechinAsia simple version.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://github.com/afifalfiano/nano-tia"
 	},
 	{
 		"name": "Simple Suggest Tour App",

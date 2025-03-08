@@ -1,7 +1,6 @@
 ---
 import { OPTIONS } from "../common/constant";
 import Comment from "../components/comment.astro";
-import Subscribe from "../components/subscribe.astro";
 import { wordCount } from "../helpers";
 import Layout from "./main.astro";
 import { Image } from 'astro:assets';
@@ -70,7 +69,6 @@ const { frontmatter } = Astro.props;
     >
       <slot />
       <Comment />
-      <Subscribe />
     </article>
   </main>
 </Layout>

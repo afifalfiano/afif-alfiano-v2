@@ -3,6 +3,8 @@ import experiences from "../collections/experiences.json";
 import AboutExperience from "../components/about-experience.astro";
 import PageHeading from "../components/page-heading.astro";
 import Layout from "../layouts/main.astro";
+
+const urlLatestCV = `http://bit.ly/4icI94K`
 ---
 
 <Layout title="About Me | AA" description="Thing about me such as experiences, motivation, short bio, etc">
@@ -20,7 +22,17 @@ import Layout from "../layouts/main.astro";
     <p
       class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
-      Front-end cutter 🧑🏻‍💻, back-end amateur 🤷🏻‍♂️, operations digging holes person 🤦🏻‍♂️.
+      Front-end cutter 🧑🏻‍💻, back-end amateur 🤷🏻‍♂️, operations digging holes person 🤦🏻‍♂️. Design Explorer 🎉.
+    </p>
+
+    <h2 class="mb-2 mt-6 text-2xl font-bold dark:text-neutral-200">Curriculum Vitae</h2>
+    <p
+      class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
+    >
+      
+      <a href={urlLatestCV}  target="_blank" class="mb-1 text-sm font-medium dark:text-neutral-300">
+        Download Latest CV 📖
+      </a>
     </p>
 
     <h2

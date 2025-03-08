@@ -4,7 +4,6 @@ import GoogleAnalytics from "../components/google-analytics.astro";
 import Header from "../components/header.astro";
 import SquareLines from "../components/square-lines.astro";
 import { SEO } from "astro-seo";
-import Subscribe from "../components/subscribe.astro";
 // import { getImagePath } from "astro-opengraph-images";
 
 const { title, description, ogGraph } = Astro.props;
@@ -89,7 +88,6 @@ const defaultOgGraph = site?.origin + '/assets/new-afif.jpeg'
     <slot />
     <Footer />
     <script src="../assets/js/main.js"></script>
-    <Subscribe />
     <Fragment set:html={import.meta.env.FOOTER_INJECT} />
   </body>
 </html>
