@@ -4,11 +4,9 @@ const props = Astro.props as Props
 const measurementId = props.measurementId
 ---
 <script
-  is:global
   type='text/partytown'
   src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}></script>
 <script
-  is:global
   type='text/partytown'
   data-ga-measurement-id={measurementId}
   id='ga-init'
