@@ -1,13 +1,11 @@
 ---
-const { logo, dates, role, company, company_profile, description, company_link, techstacks } = Astro.props;
+const { dates, role, company, company_profile, description, company_link, techstacks } = Astro.props;
 ---
 
-<div class="relative flex flex-col justify-start pl-12">
+<div class="relative flex flex-col justify-start pl-8">
   <div
-    class="absolute top-0 left-0 z-40 flex items-center justify-center -translate-x-1/2 bg-gray-100 border rounded-full dark:bg-neutral-950 w-14 h-14 border-neutral-300 dark:border-neutral-700"
-  >
-    <img src={logo} alt={company} class="w-8 h-8 rounded" />
-  </div>
+    class="absolute top-1.5 left-0 z-40 -translate-x-1/2 w-3 h-3 rounded-full bg-neutral-300 dark:bg-neutral-600 border-2 border-white dark:border-neutral-950"
+  ></div>
 
   <p
     class="text-xs uppercase text-neutral-400 dark:text-neutral-500 trackign-widest"
@@ -15,8 +13,11 @@ const { logo, dates, role, company, company_profile, description, company_link, 
     {dates}
   </p>
   <h3 class="my-1 text-lg font-bold dark:text-neutral-100">{role}</h3>
-  <a href={company_link}  target="_blank" class="mb-1 text-sm font-medium dark:text-neutral-300">
+  <a href={company_link} target="_blank" rel="noopener noreferrer" class="mb-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline inline-flex items-center gap-1">
     {company}
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+    </svg>
   </a>
   <p class="mb-3 text-sm dark:font-light light:font-normal dark:text-neutral-100">{company_profile}</p>
   {description.map((desc: string) => {

@@ -1,5 +1,4 @@
 ---
-import Button from "../components/button.astro";
 import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
@@ -7,13 +6,14 @@ import Layout from "../layouts/main.astro";
 import { Image } from 'astro:assets';
 
 const canHelpTech = [
-  {tech: "Angular.js", class: 'from-cyan-500 to-blue-600'},
-  {tech: "React.js", class: 'from-violet-300 to-fuchsia-600'},
+  {tech: "Angular", class: 'from-cyan-500 to-blue-600'},
+  {tech: "React", class: 'from-violet-300 to-fuchsia-600'},
   {tech: "Next.js", class: 'from-sky-500 to-indigo-600'},
-  {tech: "Nest.js", class: 'from-orange-500 to-orange-600'},
-  {tech: "Laravel", class: 'from-purple-300 to-pink-600'},
-  {tech: "Website Design", class: 'from-sky-400 to-indigo-600'},
-  {tech: "and more..", class: 'from-blue-300 to-indigo-600'}
+  {tech: "Ionic", class: 'from-blue-400 to-cyan-600'},
+  {tech: "TypeScript", class: 'from-blue-500 to-blue-700'},
+  {tech: "Micro-frontend", class: 'from-orange-400 to-orange-600'},
+  {tech: "Web Performance", class: 'from-green-400 to-emerald-600'},
+  {tech: "& more..", class: 'from-neutral-400 to-neutral-600'}
 ]
 ---
 
@@ -23,19 +23,20 @@ const canHelpTech = [
   >
     <div class="flex flex-col items-center md:flex-row">
       <div class="relative w-full md:w-1/2">
+        <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700">
+          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+          Open to remote & relocation
+        </div>
         <h1
-          class="mb-5 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
+          class="mb-4 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
         >
           Hello, I'm Afif.
         </h1>
-        <p class="mb-2 text-base text-neutral-600 dark:text-neutral-400">
-          I'm a software engineer specializing in frontend development from Yogyakarta, Indonesia.
-        </p>
         <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
-          People known for my high commitment, curiosity, and ability to exceed expectations. 
+          Frontend Engineer with 5+ years of experience. I write code, fix bugs, and ship things — currently at <span class="font-medium text-neutral-800 dark:text-neutral-200">Jublia, Singapore</span>.
         </p>
         <p class="mb-2 font-semibold text-neutral-800 dark:text-neutral-200">
-          I can help you out with:
+          My core stack:
         </p>
         <div class="w-full flex flex-wrap">
         {canHelpTech.map(item => {
@@ -44,7 +45,35 @@ const canHelpTech = [
           )
         })}
         </div>
-        <Button text="Follow me on LinkedIn" link="https://www.linkedin.com/in/afifalfiano/" />
+        <p class="mt-6 mb-2 font-semibold text-neutral-800 dark:text-neutral-200">
+          Connect with me:
+        </p>
+        <div class="flex flex-wrap gap-3">
+          <!-- LinkedIn: filled dark -->
+          <a
+            href="https://www.linkedin.com/in/afifalfiano/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full bg-neutral-900 dark:bg-white text-white dark:text-neutral-900 hover:opacity-80 transition-opacity duration-200"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            LinkedIn
+          </a>
+          <!-- GitHub: outlined -->
+          <a
+            href="https://github.com/afifalfiano/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold rounded-full border border-neutral-300 dark:border-neutral-600 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors duration-200"
+          >
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
+            </svg>
+            GitHub
+          </a>
+        </div>
       </div>
       <div
         class="relative justify-end hidden w-full mt-10 md:flex md:pl-10 md:w-1/2 md:mt-0 md:translate-y-4 xl:translate-y-0"

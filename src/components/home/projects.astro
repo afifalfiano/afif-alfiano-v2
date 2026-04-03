@@ -11,11 +11,10 @@ const splitProjects = pathname.includes('projects') ? projects : [...projects].s
   <h2
     class="text-2xl font-bold leading-10 tracking-tight text-neutral-900 dark:text-neutral-100"
   >
-    My Projects
+    Things I've Built
   </h2>
   <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
-    Here are some of my recent projects. I'm always working on something new, so
-    check back often!
+    A mix of open-source tools, side projects, and things I built just to solve my own problems.
   </p>
   <div
     class="grid items-stretch w-full sm:grid-cols-2 md:grid-cols-3 gap-7 mt-7"
@@ -28,6 +27,7 @@ const splitProjects = pathname.includes('projects') ? projects : [...projects].s
             description={project.description}
             image={project.image}
             url={project.url}
+            tags={project.tags}
           />
         )
       })

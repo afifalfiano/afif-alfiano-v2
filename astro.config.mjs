@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { readFileSync } from "node:fs";
 import tailwind from "@astrojs/tailwind";
 import partytown from "@astrojs/partytown";
 import sitemap from '@astrojs/sitemap';
@@ -16,7 +17,7 @@ export default defineConfig({
             name: "Roboto",
             weight: 400,
             style: "normal",
-            data: fs.readFileSync("node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff"),
+            data: readFileSync("node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff"),
           },
         ],
       },

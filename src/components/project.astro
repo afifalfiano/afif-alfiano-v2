@@ -1,5 +1,5 @@
 ---
-const { name, description, url, image } = Astro.props;
+const { name, description, url, image, tags = [] } = Astro.props;
 ---
 <a
   href={url}
@@ -20,7 +20,7 @@ const { name, description, url, image } = Astro.props;
     </span>
     <span class="block w-full px-1 mt-5 mb-1 sm:mt-3">
       <span
-        class="flex items-center mb-0 text-base font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
+        class="flex items-center mb-2 text-base font-semibold tracking-tight text-neutral-900 dark:text-neutral-100"
       >
         <span>{name}</span>
         <svg
@@ -56,9 +56,18 @@ const { name, description, url, image } = Astro.props;
           ></svg
         >
       </span>
-      <span class="text-sm text-neutral-600 dark:text-neutral-400"
-        >{description}</span
-      >
+      <span class="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+        {description}
+      </span>
+      {tags.length > 0 && (
+        <span class="flex flex-wrap gap-1.5 mt-3">
+          {tags.map((tag: string) => (
+            <span class="text-xs px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700">
+              {tag}
+            </span>
+          ))}
+        </span>
+      )}
     </span>
   </span>
 </a>

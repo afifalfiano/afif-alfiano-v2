@@ -1,38 +1,37 @@
 [
 	{
-		"name": "Monitor Subscription",
-		"description": "A simple lilbrary to monitoring data observable on Angular.",
+		"name": "Personal AI Financial Assistant",
+		"description": "AI-powered finance assistant with persistent memory and natural language expense tracking. Accessible via Telegram with automated categorization and Google Sheets as data layer.",
 		"image": "/assets/images/no-images.jpg",
-		"url": "https://github.com/afifalfiano/monitor-subscription"
+		"url": "https://github.com/afifalfiano",
+		"tags": ["Claude API", "Telegram Bot", "Google Sheets"]
 	},
 	{
 		"name": "Filter Ticket",
-		"description": "Handle complain from customer and used by company which focuses on internet service provider.",
+		"description": "Production-ready customer care platform for ISP companies with real-time complaint tracking, push notifications, role-based access control, and analytics dashboard.",
 		"image": "/assets/images/no-images.jpg",
-		"url": "https://github.com/afifalfiano/filter-ticket"
+		"url": "https://github.com/afifalfiano/filter-ticket",
+		"tags": ["React", "Redux Toolkit", "TailwindCSS", "PusherJS"]
+	},
+	{
+		"name": "Monitor Subscription",
+		"description": "Published open-source Angular library for monitoring and auto-unsubscribing RxJS observables in real-time, preventing memory leaks. Compatible with Angular 12–18.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://github.com/afifalfiano/monitor-subscription",
+		"tags": ["Angular", "TypeScript", "RxJS", "npm"]
+	},
+	{
+		"name": "Fast Direct Message WhatsApp",
+		"description": "A simple app to send WhatsApp messages without saving the contact first.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://fast-wa.vercel.app/",
+		"tags": ["React", "Vercel"]
 	},
 	{
 		"name": "Pokedex",
-		"description": "The hybrid (android, ios and web) application to showing list of pokemon and get detail.",
+		"description": "Hybrid (Android, iOS and web) application to browse and get details on Pokémon.",
 		"image": "/assets/images/no-images.jpg",
-		"url": "https://github.com/afifalfiano/pokedex"
-	},
-	{
-		"name": "Nano TIA",
-		"description": "Web apps cloning of TechinAsia simple version.",
-		"image": "/assets/images/no-images.jpg",
-		"url": "https://github.com/afifalfiano/nano-tia"
-	},
-	{
-		"name": "Simple Suggest Tour App",
-		"description": "A simple application for recommendation favorit place in my hometown.",
-		"image": "/assets/images/no-images.jpg",
-		"url": "https://github.com/afifalfiano/suggest-tour-app"
-	},
-	{
-		"name": "Fast Direct Message Whatsapp",
-		"description": "A simple application to make easier people send messageo on whatsapp.",
-		"image": "/assets/images/no-images.jpg",
-		"url": "https://fast-wa.vercel.app/"
+		"url": "https://github.com/afifalfiano/pokedex",
+		"tags": ["Ionic", "Angular"]
 	}
 ]
