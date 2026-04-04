@@ -4,6 +4,7 @@ import GoogleAnalytics from "../components/google-analytics.astro";
 import Header from "../components/header.astro";
 import SearchModal from "../components/search-modal.astro";
 import SquareLines from "../components/square-lines.astro";
+import { ViewTransitions } from "astro:transitions";
 import { SEO } from "astro-seo";
 // import { getImagePath } from "astro-opengraph-images";
 
@@ -80,6 +81,7 @@ const defaultOgGraph = site?.origin + '/assets/new-afif.jpeg'
       }
     </style>
     <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png" />
+    <ViewTransitions />
     <script src="../assets/css/main.css"></script>
     <Fragment set:html={import.meta.env.HEADER_INJECT} />
   </head>

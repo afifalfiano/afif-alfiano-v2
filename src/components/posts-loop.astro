@@ -3,7 +3,13 @@ const OPTIONS: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", da
 
 const { count } = Astro.props;
 
-type Post = { title: string; link: string; pubDate: string; description: string; thumbnail: string };
+type Post = { title: string; link: string; pubDate: string; description: string; thumbnail: string; readTime: number };
+
+function estimateReadTime(html: string): number {
+  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  const words = text.split(" ").filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
 
 let postsLoop: Post[] = [];
 try {
@@ -22,6 +28,7 @@ try {
         pubDate: item.pubDate,
         thumbnail,
         description: item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(),
+        readTime: estimateReadTime(item.content ?? item.description ?? ""),
       };
     }).slice(0, count);
   }
@@ -103,8 +110,10 @@ try {
           <p class="text-sm text-neutral-600 dark:text-neutral-400">
             <span>{post.description.length > 150 ? post.description.slice(0, 150) + '...' : post.description}</span>
           </p>
-          <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300">
-            Posted on {new Date(post.pubDate).toLocaleDateString('en-US', OPTIONS)}
+          <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300 flex items-center gap-2">
+            <span>Posted on {new Date(post.pubDate).toLocaleDateString('en-US', OPTIONS)}</span>
+            <span class="text-neutral-400 dark:text-neutral-600">·</span>
+            <span>{post.readTime} min read</span>
           </div>
           </div>
           </div>
