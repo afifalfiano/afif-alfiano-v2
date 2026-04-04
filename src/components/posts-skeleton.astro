@@ -1,0 +1,123 @@
+---
+const { count = 0, localPosts = [] } = Astro.props;
+const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
+const skeletonCount = count > 0 ? count : 6;
+---
+
+<div class="flex flex-col gap-5">
+  <!-- Skeleton placeholders shown while Medium posts load -->
+  <div id="posts-skeleton" class="flex flex-col gap-5">
+    {Array.from({ length: skeletonCount }).map(() => (
+      <div class="relative border border-dashed border-neutral-200 dark:border-neutral-800 p-7 rounded-2xl animate-pulse">
+        <div class="flex gap-5 items-center">
+          <div class="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 rounded-xl bg-neutral-200 dark:bg-neutral-800"></div>
+          <div class="flex-1 min-w-0 space-y-3">
+            <div class="h-4 bg-neutral-200 dark:bg-neutral-800 rounded w-3/4"></div>
+            <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-full"></div>
+            <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-5/6"></div>
+            <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-1/3"></div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Merged posts rendered here -->
+  <div id="posts-list" class="hidden flex flex-col gap-5"></div>
+</div>
+
+<script define:vars={{ rssKey, localPosts, limit: count }}>
+  const OPTIONS = { year: "numeric", month: "long", day: "numeric" };
+
+  function estimateReadTime(html) {
+    const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    return Math.max(1, Math.ceil(text.split(" ").filter(Boolean).length / 200));
+  }
+
+  function renderPost(post) {
+    const isExternal = post.source === "medium";
+    const onclick = isExternal
+      ? `window.open('${post.link}', '_blank')`
+      : `window.location.href='${post.link}'`;
+    const date = new Date(post.pubDate).toLocaleDateString("en-US", OPTIONS);
+    const sourceBadge = isExternal
+      ? `<span class="text-xs px-2 py-0.5 rounded-full bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-neutral-500 dark:text-neutral-400">Medium</span>`
+      : ``;
+
+    return `
+      <div class="relative border border-transparent border-dashed cursor-pointer p-7 group rounded-2xl"
+           onclick="${onclick}">
+        <div class="absolute inset-0 z-20 w-full h-full duration-300 ease-out bg-white border border-dashed dark:bg-neutral-950 rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:-translate-x-1 group-hover:-translate-y-1"></div>
+        <div class="absolute inset-0 z-10 w-full h-full duration-300 ease-out border border-dashed rounded-2xl border-neutral-300 dark:border-neutral-600 group-hover:translate-x-1 group-hover:translate-y-1"></div>
+        <div class="relative z-30 duration-300 ease-out group-hover:-translate-x-1 group-hover:-translate-y-1">
+          <div class="flex gap-5 items-center">
+            ${post.thumbnail ? `<div class="flex-shrink-0 w-24 h-24 sm:w-32 sm:h-32 overflow-hidden rounded-xl"><img src="${post.thumbnail}" alt="${post.title}" class="w-full h-full object-cover object-center" loading="lazy"/></div>` : ""}
+            <div class="flex-1 min-w-0">
+              <h2 class="flex items-center gap-2 mb-2">
+                <a href="${post.link}" ${isExternal ? 'target="_blank" rel="noopener noreferrer"' : ""}
+                   class="text-base font-bold leading-snug tracking-tight sm:text-lg dark:text-neutral-100">
+                  ${post.title}
+                </a>
+                ${sourceBadge}
+              </h2>
+              <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                ${post.description.length > 150 ? post.description.slice(0, 150) + "..." : post.description}
+              </p>
+              <div class="mt-2.5 text-xs font-medium text-neutral-800 dark:text-neutral-300 flex items-center gap-2">
+                <span>Posted on ${date}</span>
+                <span class="text-neutral-400 dark:text-neutral-600">·</span>
+                <span>${post.readTime} min read</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  async function loadPosts() {
+    const skeleton = document.getElementById("posts-skeleton");
+    const list = document.getElementById("posts-list");
+    if (!skeleton || !list) return;
+
+    let mediumPosts = [];
+    try {
+      const res = await fetch(
+        `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@afifalfiano&api_key=${rssKey}&count=100`
+      );
+      const data = await res.json();
+      if (data.status === "ok") {
+        mediumPosts = data.items.map((item) => {
+          const imgMatch = item.content?.match(/<img[^>]+src="([^"]+)"/);
+          return {
+            title: item.title,
+            link: item.link,
+            pubDate: item.pubDate,
+            thumbnail: item.thumbnail || (imgMatch ? imgMatch[1] : ""),
+            description: item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(),
+            readTime: estimateReadTime(item.content ?? item.description ?? ""),
+            source: "medium",
+          };
+        });
+      }
+    } catch {
+      // Medium unavailable — show local posts only
+    }
+
+    const sorted = [...localPosts, ...mediumPosts].sort(
+      (a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime()
+    );
+    const allPosts = limit > 0 ? sorted.slice(0, limit) : sorted;
+
+    if (allPosts.length === 0) {
+      skeleton.innerHTML = `<p class="text-sm text-neutral-500 dark:text-neutral-400 text-center py-10">Could not load posts. Try again later.</p>`;
+      return;
+    }
+
+    list.innerHTML = allPosts.map(renderPost).join("");
+    skeleton.classList.add("hidden");
+    list.classList.remove("hidden");
+  }
+
+  loadPosts();
+</script>

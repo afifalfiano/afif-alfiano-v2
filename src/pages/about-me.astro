@@ -68,6 +68,17 @@ const urlLatestCV = `/assets/resume/CV_Muhammad_Afif_Alfiano_2026.pdf`
       </a>
     </p>
 
+    <h2 class="mt-8 mb-4 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Tech Stack</h2>
+    <div class="flex flex-wrap gap-2">
+      {
+        [...new Set(experiences.flatMap((e) => e.techstacks))].map((tech) => (
+          <span class="px-3 py-1 text-xs font-medium rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors duration-200">
+            {tech}
+          </span>
+        ))
+      }
+    </div>
+
     <h2
       class="mt-5 mb-2 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200"
     >

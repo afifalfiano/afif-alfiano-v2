@@ -1,0 +1,35 @@
+<button
+  id="back-to-top"
+  aria-label="Back to top"
+  class="hidden fixed bottom-8 right-6 z-50 p-2.5 rounded-full bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 shadow-lg hover:scale-110 transition-transform duration-200"
+>
+  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5"
+       stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
+
+<script>
+  function initBackToTop() {
+    const btn = document.getElementById("back-to-top");
+    if (!btn) return;
+
+    const toggle = () => {
+      if (window.scrollY > 400) {
+        btn.classList.remove("hidden");
+      } else {
+        btn.classList.add("hidden");
+      }
+    };
+
+    window.addEventListener("scroll", toggle, { passive: true });
+    toggle();
+
+    btn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  document.addEventListener("astro:page-load", initBackToTop);
+  document.addEventListener("DOMContentLoaded", initBackToTop);
+</script>

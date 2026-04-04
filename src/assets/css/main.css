@@ -4,8 +4,43 @@
 
 /* Add Your Custom CSS Here */
 
+/* Scroll-reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .prose img {
   border-radius: 30px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent content overflow in post articles */
+.prose pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.prose table {
+  display: block;
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+.prose iframe {
+  max-width: 100%;
+}
+
+.prose * {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 #sun {

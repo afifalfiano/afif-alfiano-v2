@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+import { getCollection } from "astro:content";
 import experiences from "../collections/experiences.json";
 import menus from "../collections/menu.json";
 import projects from "../collections/projects.json";
@@ -53,7 +54,21 @@ const pageDescriptions: Record<string, string> = {
 };
 
 export const GET: APIRoute = async () => {
+	const localPosts = await getCollection(
+		"post",
+		({ data }) => data.status === "published",
+	);
+
 	const index = [
+		...localPosts.map((p) => ({
+			id: `post-${p.slug}`,
+			type: "post",
+			title: p.data.title,
+			description: p.data.description,
+			url: `/post/${p.slug}`,
+			tags: [] as string[],
+			meta: "",
+		})),
 		...menus.map((m) => ({
 			id: `page-${m.url}`,
 			type: "page",

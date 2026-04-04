@@ -315,9 +315,9 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
   // Search toggle button in header
   document.getElementById("searchToggle")?.addEventListener("click", openModal);
 
-  // Global Cmd+F / Ctrl+F shortcut
+  // Global Cmd+K / Ctrl+K shortcut
   document.addEventListener("keydown", (e: KeyboardEvent) => {
-    if ((e.metaKey || e.ctrlKey) && e.key === "f") {
+    if ((e.metaKey || e.ctrlKey) && e.key === "k") {
       e.preventDefault();
       if (modal.classList.contains("hidden")) {
         openModal();

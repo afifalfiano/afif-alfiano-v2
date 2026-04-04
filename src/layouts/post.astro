@@ -6,6 +6,7 @@ import Layout from "./main.astro";
 import { Image } from 'astro:assets';
 
 const { frontmatter } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <Layout title={frontmatter.title} description={frontmatter.description} ogGraph={frontmatter.ogImage.url}>
@@ -15,7 +16,29 @@ const { frontmatter } = Astro.props;
     class="fixed top-0 left-0 z-[200] h-0.5 w-0 bg-gradient-to-r from-cyan-500 to-blue-600 transition-none"
   ></div>
 
-  <main class="relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900"
+  <!-- Post skeleton shown during navigation -->
+  <div id="post-skeleton" class="relative z-40 max-w-4xl mx-auto mt-10 px-5 lg:px-16 pb-20">
+    <div class="animate-pulse space-y-6 pt-6 md:pt-20">
+      <div class="h-8 bg-neutral-200 dark:bg-neutral-800 rounded w-3/4 mx-auto"></div>
+      <div class="h-6 bg-neutral-200 dark:bg-neutral-800 rounded w-1/2 mx-auto"></div>
+      <div class="flex items-center gap-3 max-w-2xl mx-auto">
+        <div class="w-12 h-12 rounded-full bg-neutral-200 dark:bg-neutral-800 flex-shrink-0"></div>
+        <div class="space-y-2 flex-1">
+          <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-32"></div>
+          <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-48"></div>
+        </div>
+      </div>
+      <div class="w-full max-w-2xl mx-auto h-56 bg-neutral-200 dark:bg-neutral-800 rounded-xl"></div>
+      <div class="max-w-2xl mx-auto space-y-3">
+        {Array.from({ length: 8 }).map(() => (
+          <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-full"></div>
+        ))}
+        <div class="h-3 bg-neutral-200 dark:bg-neutral-800 rounded w-2/3"></div>
+      </div>
+    </div>
+  </div>
+
+  <main id="post-content" class="hidden relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900 overflow-x-hidden"
   >
     <div
       class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800"
@@ -71,15 +94,89 @@ const { frontmatter } = Astro.props;
     </div>
 
     <article
-      class="w-full max-w-2xl mx-auto mb-20 prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert"
+      class="w-full max-w-2xl mx-auto prose-sm prose px-7 lg:px-0 lg:prose-lg dark:prose-invert"
     >
       <slot />
-      <Comment />
     </article>
+
+    <!-- Share buttons -->
+    <div data-canonical={canonicalUrl} class="w-full max-w-2xl mx-auto px-7 lg:px-0 pt-8 pb-6 border-t border-dashed border-neutral-200 dark:border-neutral-800">
+      <p class="text-xs font-medium text-neutral-500 dark:text-neutral-400 mb-3">Share this post</p>
+      <div class="flex items-center gap-2">
+        <button
+          id="share-copy"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors duration-200"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+          <span id="share-copy-label">Copy link</span>
+        </button>
+        <a
+          id="share-x"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors duration-200"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          Share on X
+        </a>
+        <a
+          id="share-linkedin"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors duration-200"
+        >
+          <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          LinkedIn
+        </a>
+      </div>
+    </div>
+
+    <div class="w-full max-w-2xl mx-auto mb-20 px-7 lg:px-0">
+      <Comment />
+    </div>
   </main>
 </Layout>
 
 <script>
+  // Reveal post content, hide skeleton
+  const skeleton = document.getElementById("post-skeleton");
+  const content = document.getElementById("post-content");
+  if (skeleton && content) {
+    content.classList.remove("hidden");
+    skeleton.classList.add("hidden");
+  }
+
+  // Share buttons — always use canonical domain (afifalfiano.my.id)
+  const shareContainer = document.querySelector("[data-canonical]") as HTMLElement;
+  const canonical = shareContainer?.dataset.canonical ?? window.location.href;
+  const pageUrl = encodeURIComponent(canonical);
+  const pageTitle = encodeURIComponent(document.title);
+
+  const xLink = document.getElementById("share-x") as HTMLAnchorElement;
+  if (xLink) xLink.href = `https://x.com/intent/post?url=${pageUrl}&text=${pageTitle}`;
+
+  const liLink = document.getElementById("share-linkedin") as HTMLAnchorElement;
+  if (liLink) liLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+
+  const copyBtn = document.getElementById("share-copy");
+  const copyLabel = document.getElementById("share-copy-label");
+  if (copyBtn && copyLabel) {
+    copyBtn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(canonical);
+      copyLabel.textContent = "Copied!";
+      setTimeout(() => { copyLabel.textContent = "Copy link"; }, 2000);
+    });
+  }
+
   // Reading progress bar
   const bar = document.getElementById("reading-progress") as HTMLElement;
   if (bar) {
@@ -111,7 +208,7 @@ const { frontmatter } = Astro.props;
     wrapper.appendChild(btn);
 
     btn.addEventListener("click", async () => {
-      const code = pre.querySelector("code")?.innerText ?? pre.innerText;
+      const code = (pre.querySelector("code") as HTMLElement)?.innerText ?? (pre as HTMLElement).innerText;
       await navigator.clipboard.writeText(code);
       btn.innerHTML =
         '<svg class="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Copied!</span>';

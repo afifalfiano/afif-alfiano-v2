@@ -1,6 +1,21 @@
 ---
+import { getCollection } from "astro:content";
+import { wordCount } from "../../helpers";
 import Button from "../button.astro";
-import PostsLoop from "../posts-loop.astro";
+import PostsSkeleton from "../posts-skeleton.astro";
+
+const localPosts = await getCollection("post", ({ data }) => data.status === "published");
+const localPostsData = localPosts
+  .sort((a, b) => new Date(b.data.dateFormatted).getTime() - new Date(a.data.dateFormatted).getTime())
+  .map((p) => ({
+    title: p.data.title,
+    link: `/post/${p.slug}/`,
+    pubDate: p.data.dateFormatted,
+    description: p.data.description,
+    thumbnail: p.data.coverImage,
+    readTime: Number(wordCount(p.data.wordCount)),
+    source: "local",
+  }));
 ---
 
 <section class="max-w-4xl mx-auto px-7 lg:px-0">
@@ -14,9 +29,9 @@ import PostsLoop from "../posts-loop.astro";
   </p>
 
   <div class="w-full max-w-4xl mx-auto my-7 xl:px-0">
-    <div class="flex flex-col items-start justify-start md:flex-row md:space-x-7">
+    <div class="flex flex-col items-start justify-start md:flex-row md:space-x-7 md:items-start">
       <div class="w-full md:w-2/3 space-y-7">
-        <PostsLoop count="3" />
+        <PostsSkeleton count={3} localPosts={localPostsData} />
 
         <div class="flex items-center justify-center w-full py-5">
           <Button text="See Everything I've Written" link="/posts" />

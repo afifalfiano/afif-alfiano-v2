@@ -140,11 +140,14 @@ function showNight(animate) {
 window.applyMenuItemClasses = () => {
 	const menuItems = document.querySelectorAll("#menu a");
 	for (let i = 0; i < menuItems.length; i++) {
-		if (menuItems[i].pathname === window.location.pathname) {
-			menuItems[i].classList.add("text-neutral-900", "dark:text-white");
-		}
+		const isActive = menuItems[i].pathname === window.location.pathname;
+		menuItems[i].classList.toggle("text-neutral-900", isActive);
+		menuItems[i].classList.toggle("dark:text-white", isActive);
+		menuItems[i].classList.toggle("font-semibold", isActive);
+		menuItems[i].classList.toggle("underline", isActive);
+		menuItems[i].classList.toggle("underline-offset-4", isActive);
+		menuItems[i].classList.toggle("decoration-dashed", isActive);
 	}
-	//:class="{ 'text-neutral-900 dark:text-white': window.location.pathname == '{menu.url}', 'text-neutral-700 dark:text-neutral-400': window.location.pathname != '{menu.url}' }"
 };
 
 function mobileMenuFunctionality() {

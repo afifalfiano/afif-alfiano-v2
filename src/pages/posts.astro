@@ -1,7 +1,22 @@
 ---
+import { getCollection } from "astro:content";
+import { wordCount } from "../helpers";
 import PageHeading from "../components/page-heading.astro";
-import PostsLoop from "../components/posts-loop.astro";
+import PostsSkeleton from "../components/posts-skeleton.astro";
 import Layout from "../layouts/main.astro";
+
+const localPosts = await getCollection("post", ({ data }) => data.status === "published");
+const localPostsData = localPosts
+  .sort((a, b) => new Date(b.data.dateFormatted).getTime() - new Date(a.data.dateFormatted).getTime())
+  .map((p) => ({
+    title: p.data.title,
+    link: `/post/${p.slug}/`,
+    pubDate: p.data.dateFormatted,
+    description: p.data.description,
+    thumbnail: p.data.coverImage,
+    readTime: Number(wordCount(p.data.wordCount)),
+    source: "local",
+  }));
 ---
 
 <Layout title="My Posts | AA" description="Keep an eye out for fresh insights and updates">
@@ -12,7 +27,7 @@ import Layout from "../layouts/main.astro";
     />
 
     <div class="z-50 flex flex-col items-stretch w-full gap-5 my-8">
-      <PostsLoop count="999999999" />
+      <PostsSkeleton localPosts={localPostsData} />
     </div>
   </section>
 </Layout>

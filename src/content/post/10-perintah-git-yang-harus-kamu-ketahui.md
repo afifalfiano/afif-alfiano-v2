@@ -1,7 +1,7 @@
 ---
 title: 10 perintah git yang harus kamu ketahui
 description: Selamat Sore. Bagaimana kabarmu hari ini? Semoga selalu diberikan kesehatan dan semangat yang tak pernah padam. Pernahkah kamu berkolaborasi dengan orang lain? Bagaimana cara memanajemen project yang dikerjakan? 
-coverImage: /assets/blog/preview/cover.jpg
+coverImage: /assets/blog/10.git/1.header.jpeg
 dateFormatted: '2020-07-11T10:12:00.000Z'
 wordCount: 1449
 author:
