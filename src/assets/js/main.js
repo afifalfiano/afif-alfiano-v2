@@ -14,7 +14,7 @@ const stickyClassesContainer = [
 const unstickyClassesContainer = ["border-transparent"];
 let headerElement = null;
 
-document.addEventListener("DOMContentLoaded", () => {
+function init() {
 	headerElement = document.getElementById("header");
 	if (
 		localStorage.getItem("dark_mode") &&
@@ -29,7 +29,24 @@ document.addEventListener("DOMContentLoaded", () => {
 	applyMenuItemClasses();
 	evaluateHeaderPosition();
 	mobileMenuFunctionality();
-});
+
+	const darkToggle = document.getElementById("darkToggle");
+	if (darkToggle) {
+		darkToggle.addEventListener("click", () => {
+			document.documentElement.classList.add("duration-300");
+			if (document.documentElement.classList.contains("dark")) {
+				localStorage.setItem("dark_mode", "false");
+				showDay(true);
+			} else {
+				localStorage.setItem("dark_mode", true);
+				showNight(true);
+			}
+		});
+	}
+}
+
+document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("astro:page-load", init);
 
 // window.toggleDarkMode = function(){
 //     document.documentElement.classList.toggle('dark');
@@ -67,18 +84,6 @@ window.evaluateHeaderPosition = () => {
 		document.getElementById("menu").classList.add("top-[75px]");
 	}
 };
-
-document.getElementById("darkToggle").addEventListener("click", () => {
-	document.documentElement.classList.add("duration-300");
-
-	if (document.documentElement.classList.contains("dark")) {
-		localStorage.removeItem("dark_mode");
-		showDay(true);
-	} else {
-		localStorage.setItem("dark_mode", true);
-		showNight(true);
-	}
-});
 
 function showDay(animate) {
 	document.getElementById("sun").classList.remove("setting");
