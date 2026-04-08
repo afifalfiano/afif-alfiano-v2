@@ -1,5 +1,12 @@
 [
 	{
+		"name": "TamTamPip",
+		"description": "Tamagotchi-inspired virtual pet game that runs entirely in the browser. Hatch and raise pixel-art pets through a full lifecycle (Egg → Adult), care for them with feed/play/sleep/clean actions, battle CPU opponents in a turn-based system, and level up through ranks from Rookie to Legend — all persisted in localStorage.",
+		"image": "/assets/images/no-images.jpg",
+		"url": "https://tamtampip.pipdev.net/",
+		"tags": ["React 19", "Vite", "Vitest", "CSS"]
+	},
+	{
 		"name": "Personal AI Financial Assistant",
 		"description": "AI-powered finance assistant with persistent memory and natural language expense tracking. Accessible via Telegram with automated categorization and Google Sheets as data layer.",
 		"image": "/assets/images/no-images.jpg",
