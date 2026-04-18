@@ -58,6 +58,8 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
 </div>
 
 <script>
+  import { pushEvent } from "../assets/js/gtm-events";
+
   type SearchItem = {
     id: string;
     type: "post" | "project" | "talk" | "experience" | "medium";
@@ -182,7 +184,7 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
       li.appendChild(badge);
       li.appendChild(content);
 
-      li.addEventListener("click", () => navigateTo(item.url));
+      li.addEventListener("click", () => navigateTo(item.url, item, i));
       resultsList.appendChild(li);
     }
 
@@ -206,7 +208,15 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
     }
   }
 
-  function navigateTo(url: string) {
+  function navigateTo(url: string, item?: SearchItem, position?: number) {
+    if (item) {
+      pushEvent("search_result_click", {
+        search_term: input.value.trim(),
+        result_title: item.title,
+        result_type: item.type,
+        result_position: (position ?? 0) + 1,
+      });
+    }
     if (url.startsWith("http")) {
       window.open(url, "_blank", "noopener,noreferrer");
     } else {
@@ -272,6 +282,7 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
     if (!indexLoaded || !mediumLoaded) {
       loadData();
     }
+    pushEvent("search_open");
   }
 
   function closeModal() {
@@ -286,9 +297,22 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
 
   // Input handler with debounce
   let debounceTimer: ReturnType<typeof setTimeout>;
+  let searchEventTimer: ReturnType<typeof setTimeout>;
   input.addEventListener("input", () => {
     clearTimeout(debounceTimer);
     debounceTimer = setTimeout(() => renderResults(input.value), 150);
+
+    // Separate 500ms debounce for search_query event (≥3 chars threshold)
+    clearTimeout(searchEventTimer);
+    searchEventTimer = setTimeout(() => {
+      const query = input.value.trim();
+      if (query.length >= 3) {
+        pushEvent("search_query", {
+          search_term: query,
+          result_count: currentResults.length,
+        });
+      }
+    }, 500);
   });
 
   // Keyboard navigation inside modal
@@ -302,7 +326,7 @@ const rssKey = import.meta.env.RSS2JSON_API_KEY ?? "";
     } else if (e.key === "Enter") {
       e.preventDefault();
       if (selectedIndex >= 0 && currentResults[selectedIndex]) {
-        navigateTo(currentResults[selectedIndex].url);
+        navigateTo(currentResults[selectedIndex].url, currentResults[selectedIndex], selectedIndex);
       }
     } else if (e.key === "Escape") {
       closeModal();

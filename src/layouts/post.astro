@@ -38,7 +38,12 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
     </div>
   </div>
 
-  <main id="post-content" class="hidden relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900 overflow-x-hidden"
+  <main
+    id="post-content"
+    data-post-title={frontmatter.title}
+    data-post-slug={Astro.url.pathname}
+    data-post-author={frontmatter.author.name}
+    class="hidden relative z-30 max-w-4xl pb-1 mx-auto mt-10 bg-white dark:bg-neutral-950 md:rounded-t-md text-neutral-900 overflow-x-hidden"
   >
     <div
       class="relative flex flex-col px-5 pt-6 border-t border-b-0 md:border-r md:border-l md:pt-20 lg:px-0 justify-stretch md:rounded-t-2xl border-neutral-200 dark:border-neutral-800"
@@ -147,75 +152,176 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;
 </Layout>
 
 <script>
-  // Reveal post content, hide skeleton
-  const skeleton = document.getElementById("post-skeleton");
-  const content = document.getElementById("post-content");
-  if (skeleton && content) {
-    content.classList.remove("hidden");
-    skeleton.classList.add("hidden");
-  }
+  import { pushEvent as _pushEvent } from "../assets/js/gtm-events";
 
-  // Share buttons — always use canonical domain (afifalfiano.my.id)
-  const shareContainer = document.querySelector("[data-canonical]") as HTMLElement;
-  const canonical = shareContainer?.dataset.canonical ?? window.location.href;
-  const pageUrl = encodeURIComponent(canonical);
-  const pageTitle = encodeURIComponent(document.title);
+  // Use WeakSet guards so listeners are attached at most once per element instance.
+  // astro:page-load fires on every navigation (including first load), so no DOMContentLoaded needed.
+  const shareTracked = new WeakSet<Element>();
+  const gtmShareTracked = new WeakSet<Element>();
+  const progressTracked = new WeakSet<Window>();
 
-  const xLink = document.getElementById("share-x") as HTMLAnchorElement;
-  if (xLink) xLink.href = `https://x.com/intent/post?url=${pageUrl}&text=${pageTitle}`;
+  function initPostScripts() {
+    // Reveal post content, hide skeleton
+    const skeleton = document.getElementById("post-skeleton");
+    const content = document.getElementById("post-content");
+    if (skeleton && content) {
+      content.classList.remove("hidden");
+      skeleton.classList.add("hidden");
+    }
 
-  const liLink = document.getElementById("share-linkedin") as HTMLAnchorElement;
-  if (liLink) liLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
+    // Share buttons — always use canonical domain (afifalfiano.my.id)
+    const shareContainer = document.querySelector("[data-canonical]") as HTMLElement;
+    const canonical = shareContainer?.dataset.canonical ?? window.location.href;
+    const pageUrl = encodeURIComponent(canonical);
+    const pageTitle = encodeURIComponent(document.title);
 
-  const copyBtn = document.getElementById("share-copy");
-  const copyLabel = document.getElementById("share-copy-label");
-  if (copyBtn && copyLabel) {
-    copyBtn.addEventListener("click", async () => {
-      await navigator.clipboard.writeText(canonical);
-      copyLabel.textContent = "Copied!";
-      setTimeout(() => { copyLabel.textContent = "Copy link"; }, 2000);
-    });
-  }
+    const xLink = document.getElementById("share-x") as HTMLAnchorElement;
+    if (xLink) xLink.href = `https://x.com/intent/post?url=${pageUrl}&text=${pageTitle}`;
 
-  // Reading progress bar
-  const bar = document.getElementById("reading-progress") as HTMLElement;
-  if (bar) {
-    const update = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      bar.style.width = `${Math.min(pct, 100)}%`;
-    };
-    window.addEventListener("scroll", update, { passive: true });
-    update();
-  }
+    const liLink = document.getElementById("share-linkedin") as HTMLAnchorElement;
+    if (liLink) liLink.href = `https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}`;
 
-  // Copy code buttons
-  const blocks = document.querySelectorAll("article pre");
-  for (const pre of blocks) {
-    const wrapper = document.createElement("div");
-    wrapper.className = "relative group/code";
-    pre.parentNode?.insertBefore(wrapper, pre);
-    wrapper.appendChild(pre);
+    const copyBtn = document.getElementById("share-copy");
+    const copyLabel = document.getElementById("share-copy-label");
+    if (copyBtn && copyLabel && !shareTracked.has(copyBtn)) {
+      shareTracked.add(copyBtn);
+      copyBtn.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(canonical);
+        copyLabel.textContent = "Copied!";
+        setTimeout(() => { copyLabel.textContent = "Copy link"; }, 2000);
+      });
+    }
 
-    const btn = document.createElement("button");
-    btn.className =
-      "absolute top-3 right-3 opacity-0 group-hover/code:opacity-100 transition-opacity duration-200 " +
-      "flex items-center gap-1 px-2 py-1 text-xs rounded-md " +
-      "bg-neutral-700 hover:bg-neutral-600 text-neutral-200 border border-neutral-600";
-    btn.innerHTML =
-      '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span>';
-    wrapper.appendChild(btn);
+    // Reading progress bar — attach once per window (survives View Transitions)
+    if (!progressTracked.has(window)) {
+      progressTracked.add(window);
+      const update = () => {
+        // Re-query on each scroll tick since the element may be replaced by View Transitions
+        const bar = document.getElementById("reading-progress") as HTMLElement | null;
+        if (!bar) return;
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = `${Math.min(pct, 100)}%`;
+      };
+      window.addEventListener("scroll", update, { passive: true });
+    }
 
-    btn.addEventListener("click", async () => {
-      const code = (pre.querySelector("code") as HTMLElement)?.innerText ?? (pre as HTMLElement).innerText;
-      await navigator.clipboard.writeText(code);
+    // Share button tracking — attach once per element instance
+    const _postTitle = document.title;
+
+    const _copyBtn = document.getElementById("share-copy");
+    if (_copyBtn && !gtmShareTracked.has(_copyBtn)) {
+      gtmShareTracked.add(_copyBtn);
+      _copyBtn.addEventListener("click", () => {
+        _pushEvent("share_click", { share_method: "copy_link", post_title: _postTitle });
+      });
+    }
+
+    const _xLink = document.getElementById("share-x");
+    if (_xLink && !gtmShareTracked.has(_xLink)) {
+      gtmShareTracked.add(_xLink);
+      _xLink.addEventListener("click", () => {
+        _pushEvent("share_click", { share_method: "x", post_title: _postTitle });
+      });
+    }
+
+    const _liLink = document.getElementById("share-linkedin");
+    if (_liLink && !gtmShareTracked.has(_liLink)) {
+      gtmShareTracked.add(_liLink);
+      _liLink.addEventListener("click", () => {
+        _pushEvent("share_click", { share_method: "linkedin", post_title: _postTitle });
+      });
+    }
+
+    // Copy code buttons — attach once per <pre> element
+    const blocks = document.querySelectorAll("article pre");
+    for (const pre of blocks) {
+      if (shareTracked.has(pre)) continue;
+      shareTracked.add(pre);
+
+      const wrapper = document.createElement("div");
+      wrapper.className = "relative group/code";
+      pre.parentNode?.insertBefore(wrapper, pre);
+      wrapper.appendChild(pre);
+
+      const btn = document.createElement("button");
+      btn.className =
+        "absolute top-3 right-3 opacity-0 group-hover/code:opacity-100 transition-opacity duration-200 " +
+        "flex items-center gap-1 px-2 py-1 text-xs rounded-md " +
+        "bg-neutral-700 hover:bg-neutral-600 text-neutral-200 border border-neutral-600";
       btn.innerHTML =
-        '<svg class="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Copied!</span>';
-      setTimeout(() => {
+        '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span>';
+      wrapper.appendChild(btn);
+
+      btn.addEventListener("click", async () => {
+        const code = (pre.querySelector("code") as HTMLElement)?.innerText ?? (pre as HTMLElement).innerText;
+        await navigator.clipboard.writeText(code);
         btn.innerHTML =
-          '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span>';
-      }, 2000);
-    });
+          '<svg class="w-3.5 h-3.5 text-green-400" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span>Copied!</span>';
+        setTimeout(() => {
+          btn.innerHTML =
+            '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg><span>Copy</span>';
+        }, 2000);
+      });
+    }
   }
+
+  document.addEventListener("astro:page-load", initPostScripts);
+</script>
+
+<script>
+  // Blog post view + reading depth tracking
+  import { pushEvent, computeScrollDepth } from "../assets/js/gtm-events";
+
+  const MILESTONES = [25, 50, 75, 100] as const;
+  type Milestone = (typeof MILESTONES)[number];
+
+  let firedMilestones = new Set<Milestone>();
+  let scrollHandler: (() => void) | null = null;
+
+  function initPostTracking() {
+    const postContent = document.getElementById("post-content") as HTMLElement | null;
+    if (!postContent) return;
+
+    const postTitle = postContent.dataset.postTitle ?? document.title;
+    const postSlug = postContent.dataset.postSlug ?? window.location.pathname;
+    const postAuthor = postContent.dataset.postAuthor ?? "";
+
+    // Fire blog_post_view once per page load
+    pushEvent("blog_post_view", {
+      post_title: postTitle,
+      post_slug: postSlug,
+      post_author: postAuthor,
+    });
+
+    // Reset milestones and re-attach scroll listener
+    firedMilestones = new Set<Milestone>();
+    if (scrollHandler) {
+      window.removeEventListener("scroll", scrollHandler);
+    }
+
+    scrollHandler = () => {
+      const depth = computeScrollDepth(
+        window.scrollY,
+        document.documentElement.scrollHeight,
+        window.innerHeight,
+      );
+      for (const milestone of MILESTONES) {
+        if (depth >= milestone && !firedMilestones.has(milestone)) {
+          firedMilestones.add(milestone);
+          pushEvent("reading_depth", {
+            depth_percent: milestone,
+            post_title: postTitle,
+          });
+        }
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler, { passive: true });
+  }
+
+  // astro:page-load fires on every navigation including the first load.
+  // DOMContentLoaded is NOT needed — astro:page-load covers the initial load too.
+  document.addEventListener("astro:page-load", initPostTracking);
 </script>

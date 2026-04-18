@@ -1,0 +1,42 @@
+---
+// No server-side props — this is a headless script-only component
+---
+<script>
+  import { pushEvent, isOutboundUrl, getLinkText } from "../assets/js/gtm-events";
+
+  // --- Outbound link tracking ---
+  // Added once at module evaluation time (not inside a page-load handler)
+  // so the listener is never duplicated across View Transition navigations.
+  document.addEventListener("click", (event) => {
+    const anchor = (event.target as Element).closest("a");
+    if (!anchor) return;
+    if (isOutboundUrl(anchor.href)) {
+      pushEvent("outbound_click", {
+        link_url: anchor.href,
+        link_text: getLinkText(anchor),
+      });
+    }
+  });
+
+  // --- Navigation click tracking ---
+  // Re-queries #menu on each page load (View Transitions may swap the element),
+  // but uses a WeakMap to ensure only one listener is ever attached per element.
+  const navTracked = new WeakSet<Element>();
+
+  function wireNavTracking() {
+    const menu = document.getElementById("menu");
+    if (!menu || navTracked.has(menu)) return;
+    navTracked.add(menu);
+
+    menu.addEventListener("click", (event) => {
+      const anchor = (event.target as Element).closest("a");
+      if (!anchor) return;
+      pushEvent("nav_click", {
+        nav_label: anchor.textContent?.trim(),
+        nav_url: anchor.getAttribute("href") ?? anchor.href,
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", wireNavTracking);
+</script>

@@ -140,3 +140,29 @@ import Logo from "../components/logo.astro";
     </nav>
   </div>
 </header>
+
+<script>
+  // Dark mode toggle event tracking
+  import { pushEvent } from "../assets/js/gtm-events";
+
+  // Use a WeakSet to ensure only one listener is ever attached per toggle element,
+  // even when wireDarkModeTracking is called on every astro:page-load.
+  const darkTracked = new WeakSet<Element>();
+
+  function wireDarkModeTracking() {
+    const darkToggle = document.getElementById("darkToggle");
+    if (!darkToggle || darkTracked.has(darkToggle)) return;
+    darkTracked.add(darkToggle);
+
+    darkToggle.addEventListener("click", () => {
+      // main.js flips the 'dark' class after this handler runs.
+      // Reading classList before the flip gives us the theme being activated.
+      const willBeDark = !document.documentElement.classList.contains("dark");
+      pushEvent("dark_mode_toggle", {
+        theme: willBeDark ? "dark" : "light",
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", wireDarkModeTracking);
+</script>
