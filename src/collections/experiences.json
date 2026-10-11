@@ -1,6 +1,29 @@
 [
 	{
-		"dates": "April 2025 - Present",
+		"dates": "September 2026 - Present",
+		"role": "Senior Frontend Developer",
+		"company_link": "https://www.checkproof.com/",
+		"company": "CheckProof",
+		"company_profile": "CheckProof is a Stockholm-based SaaS platform for maintenance and HSEQ management, built for frontline teams in construction materials and heavy industry. Trusted by thousands of users across 35+ countries and part of the Granitor group.",
+		"description": [
+			"Build and maintain the CheckProof web platform using Ember.js and TypeScript.",
+			"Develop new features with the latest Angular and Ionic, sharing a single codebase across web and mobile.",
+			"Develop a Backend-for-Frontend (BFF) layer with NestJS and GraphQL to serve the frontend.",
+			"Collaborate with a distributed, cross-functional engineering team to ship inspection, reporting, and maintenance features.",
+			"Leverage AI tools (Claude) to assist coding, code review, and onboarding onto a large existing codebase."
+		],
+		"logo": "/assets/images/no-images.jpg",
+		"techstacks": [
+			"Angular",
+			"Ionic",
+			"Ember.js",
+			"TypeScript",
+			"NestJS",
+			"GraphQL"
+		]
+	},
+	{
+		"dates": "April 2025 - August 2026",
 		"role": "Frontend Engineer",
 		"company_link": "https://jublia.com/",
 		"company": "Jublia",
@@ -46,7 +69,13 @@
 			"Mentored 2 junior developers via code reviews, raising overall team code quality."
 		],
 		"logo": "/assets/images/no-images.jpg",
-		"techstacks": ["Angular", "TypeScript", "Cypress", "Module Federation", "Figma"]
+		"techstacks": [
+			"Angular",
+			"TypeScript",
+			"Cypress",
+			"Module Federation",
+			"Figma"
+		]
 	},
 	{
 		"dates": "January 2020 - August 2020",

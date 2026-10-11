@@ -1,20 +1,20 @@
 ---
+import { Image } from "astro:assets";
 import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
-import { Image } from 'astro:assets';
 
 const canHelpTech = [
-  {tech: "Angular", class: 'from-cyan-500 to-blue-600'},
-  {tech: "React", class: 'from-violet-300 to-fuchsia-600'},
-  {tech: "Next.js", class: 'from-sky-500 to-indigo-600'},
-  {tech: "Ionic", class: 'from-blue-400 to-cyan-600'},
-  {tech: "TypeScript", class: 'from-blue-500 to-blue-700'},
-  {tech: "Micro-frontend", class: 'from-orange-400 to-orange-600'},
-  {tech: "Web Performance", class: 'from-green-400 to-emerald-600'},
-  {tech: "& more..", class: 'from-neutral-400 to-neutral-600'}
-]
+	{ tech: "Angular", class: "from-cyan-500 to-blue-600" },
+	{ tech: "React", class: "from-violet-300 to-fuchsia-600" },
+	{ tech: "Next.js", class: "from-sky-500 to-indigo-600" },
+	{ tech: "Ionic", class: "from-blue-400 to-cyan-600" },
+	{ tech: "TypeScript", class: "from-blue-500 to-blue-700" },
+	{ tech: "Micro-frontend", class: "from-orange-400 to-orange-600" },
+	{ tech: "Web Performance", class: "from-green-400 to-emerald-600" },
+	{ tech: "& more..", class: "from-neutral-400 to-neutral-600" },
+];
 ---
 
 <Layout title="Afif Alfiano" description="Personal website by afif alfiano">
@@ -23,17 +23,13 @@ const canHelpTech = [
   >
     <div class="flex flex-col items-center md:flex-row">
       <div class="relative w-full md:w-1/2">
-        <div class="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-700">
-          <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-          Open to remote & relocation
-        </div>
         <h1
           class="mb-4 text-4xl font-bold leading-tight md:text-4xl lg:text-6xl dark:text-white"
         >
           Hello, I'm Afif.
         </h1>
         <p class="mb-6 text-base text-neutral-600 dark:text-neutral-400">
-          Frontend Engineer with 5+ years of experience. I write code, fix bugs, and ship things — currently at <span class="font-medium text-neutral-800 dark:text-neutral-200">Jublia, Singapore</span>.
+          Frontend Engineer with 5+ years of experience. I write code, fix bugs, and ship things — currently at <span class="font-medium text-neutral-800 dark:text-neutral-200">CheckProof, Stockholm</span> (remote from Indonesia).
         </p>
         <p class="mb-2 font-semibold text-neutral-800 dark:text-neutral-200">
           My core stack:
