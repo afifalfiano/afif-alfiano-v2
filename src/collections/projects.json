@@ -4,7 +4,14 @@
 		"description": "A simple mood tracking app to log and visualize your daily emotional patterns over time.",
 		"image": "/assets/images/no-images.jpg",
 		"url": "https://mood-tracker.pipdev.net/",
-		"tags": ["React", "Vite", "Express", "PostgreSQL", "Claude API", "WebSocket"]
+		"tags": [
+			"React",
+			"Vite",
+			"Express",
+			"PostgreSQL",
+			"Claude API",
+			"WebSocket"
+		]
 	},
 	{
 		"name": "TamTamPip",

@@ -1,9 +1,9 @@
 ---
+import { Image } from "astro:assets";
 import { OPTIONS } from "../common/constant";
 import Comment from "../components/comment.astro";
 import { wordCount } from "../helpers";
 import Layout from "./main.astro";
-import { Image } from 'astro:assets';
 
 const { frontmatter } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).href;

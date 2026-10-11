@@ -8,9 +8,9 @@
 
 // Extend the Window interface to include dataLayer
 declare global {
-  interface Window {
-    dataLayer: Record<string, unknown>[];
-  }
+	interface Window {
+		dataLayer: Record<string, unknown>[];
+	}
 }
 
 /**
@@ -18,7 +18,7 @@ declare global {
  * Never overwrites an existing array.
  */
 function ensureDataLayer(): void {
-  window.dataLayer = window.dataLayer || [];
+	window.dataLayer = window.dataLayer || [];
 }
 
 /**
@@ -29,12 +29,12 @@ function ensureDataLayer(): void {
  * @param params - Optional additional parameters merged into the event object
  */
 export function pushEvent(
-  eventName: string,
-  params?: Record<string, unknown>,
+	eventName: string,
+	params?: Record<string, unknown>,
 ): void {
-  if (typeof window === "undefined") return;
-  ensureDataLayer();
-  window.dataLayer.push({ event: eventName, ...params });
+	if (typeof window === "undefined") return;
+	ensureDataLayer();
+	window.dataLayer.push({ event: eventName, ...params });
 }
 
 /**
@@ -44,14 +44,14 @@ export function pushEvent(
  * @param href - The anchor's href attribute value
  */
 export function isOutboundUrl(href: string): boolean {
-  if (typeof window === "undefined") return false;
-  if (!href.startsWith("http")) return false;
-  try {
-    const url = new URL(href);
-    return url.hostname !== window.location.hostname;
-  } catch {
-    return false;
-  }
+	if (typeof window === "undefined") return false;
+	if (!href.startsWith("http")) return false;
+	try {
+		const url = new URL(href);
+		return url.hostname !== window.location.hostname;
+	} catch {
+		return false;
+	}
 }
 
 /**
@@ -66,11 +66,11 @@ export function isOutboundUrl(href: string): boolean {
  * @param anchor - The HTMLAnchorElement to extract text from
  */
 export function getLinkText(anchor: HTMLAnchorElement): string {
-  const trimmed = anchor.textContent?.trim() ?? "";
-  if (trimmed) return trimmed;
-  const ariaLabel = anchor.getAttribute("aria-label");
-  if (ariaLabel) return ariaLabel;
-  return "(no text)";
+	const trimmed = anchor.textContent?.trim() ?? "";
+	if (trimmed) return trimmed;
+	const ariaLabel = anchor.getAttribute("aria-label");
+	if (ariaLabel) return ariaLabel;
+	return "(no text)";
 }
 
 /**
@@ -85,12 +85,12 @@ export function getLinkText(anchor: HTMLAnchorElement): string {
  * @param innerHeight - Visible viewport height
  */
 export function computeScrollDepth(
-  scrollY: number,
-  scrollHeight: number,
-  innerHeight: number,
+	scrollY: number,
+	scrollHeight: number,
+	innerHeight: number,
 ): number {
-  const scrollable = scrollHeight - innerHeight;
-  if (scrollable <= 0) return 100;
-  const clamped = Math.min(scrollY, scrollable);
-  return Math.floor((clamped / scrollable) * 100);
+	const scrollable = scrollHeight - innerHeight;
+	if (scrollable <= 0) return 100;
+	const clamped = Math.min(scrollY, scrollable);
+	return Math.floor((clamped / scrollable) * 100);
 }

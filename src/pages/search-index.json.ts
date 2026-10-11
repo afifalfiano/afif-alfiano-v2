@@ -1,5 +1,5 @@
-import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import type { APIRoute } from "astro";
 import experiences from "../collections/experiences.json";
 import menus from "../collections/menu.json";
 import projects from "../collections/projects.json";
@@ -47,7 +47,8 @@ const talks = [
 
 const pageDescriptions: Record<string, string> = {
 	"/": "Home page — overview of my work, featured projects and latest posts.",
-	"/posts": "All blog posts — articles on frontend engineering, Angular, React, and more.",
+	"/posts":
+		"All blog posts — articles on frontend engineering, Angular, React, and more.",
 	"/projects": "Projects — open-source and professional projects I've built.",
 	"/talks": "Talks — conference and community presentations I've given.",
 	"/about-me": "About me — my background, work experience, and CV.",

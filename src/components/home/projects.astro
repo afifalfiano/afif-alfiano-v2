@@ -3,8 +3,10 @@ import projects from "../../collections/projects.json";
 import Button from "../button.astro";
 import Project from "../project.astro";
 
-const {pathname} = Astro.url
-const splitProjects = pathname.includes('projects') ? projects : [...projects].splice(0, 3); 
+const { pathname } = Astro.url;
+const splitProjects = pathname.includes("projects")
+	? projects
+	: [...projects].splice(0, 3);
 ---
 
 <section class="max-w-4xl mx-auto px-7 lg:px-0">

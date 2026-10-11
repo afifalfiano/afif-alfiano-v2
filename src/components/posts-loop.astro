@@ -1,39 +1,58 @@
 ---
-const OPTIONS: Intl.DateTimeFormatOptions = { year: "numeric", month: "long", day: "numeric" };
+const OPTIONS: Intl.DateTimeFormatOptions = {
+	year: "numeric",
+	month: "long",
+	day: "numeric",
+};
 
 const { count } = Astro.props;
 
-type Post = { title: string; link: string; pubDate: string; description: string; thumbnail: string; readTime: number };
+type Post = {
+	title: string;
+	link: string;
+	pubDate: string;
+	description: string;
+	thumbnail: string;
+	readTime: number;
+};
 
 function estimateReadTime(html: string): number {
-  const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  const words = text.split(" ").filter(Boolean).length;
-  return Math.max(1, Math.ceil(words / 200));
+	const text = html
+		.replace(/<[^>]+>/g, " ")
+		.replace(/\s+/g, " ")
+		.trim();
+	const words = text.split(" ").filter(Boolean).length;
+	return Math.max(1, Math.ceil(words / 200));
 }
 
 let postsLoop: Post[] = [];
 try {
-  const apiKey = import.meta.env.RSS2JSON_API_KEY;
-  const res = await fetch(
-    `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@afifalfiano&api_key=${apiKey}&count=100`
-  );
-  const data = await res.json();
-  if (data.status === "ok") {
-    postsLoop = data.items.map((item: Record<string, string>) => {
-      const imgMatch = item.content?.match(/<img[^>]+src="([^"]+)"/);
-      const thumbnail = item.thumbnail || (imgMatch ? imgMatch[1] : "");
-      return {
-        title: item.title,
-        link: item.link,
-        pubDate: item.pubDate,
-        thumbnail,
-        description: item.description.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim(),
-        readTime: estimateReadTime(item.content ?? item.description ?? ""),
-      };
-    }).slice(0, count);
-  }
+	const apiKey = import.meta.env.RSS2JSON_API_KEY;
+	const res = await fetch(
+		`https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@afifalfiano&api_key=${apiKey}&count=100`,
+	);
+	const data = await res.json();
+	if (data.status === "ok") {
+		postsLoop = data.items
+			.map((item: Record<string, string>) => {
+				const imgMatch = item.content?.match(/<img[^>]+src="([^"]+)"/);
+				const thumbnail = item.thumbnail || (imgMatch ? imgMatch[1] : "");
+				return {
+					title: item.title,
+					link: item.link,
+					pubDate: item.pubDate,
+					thumbnail,
+					description: item.description
+						.replace(/<[^>]+>/g, " ")
+						.replace(/\s+/g, " ")
+						.trim(),
+					readTime: estimateReadTime(item.content ?? item.description ?? ""),
+				};
+			})
+			.slice(0, count);
+	}
 } catch (e) {
-  console.error("Failed to fetch Medium posts", e);
+	console.error("Failed to fetch Medium posts", e);
 }
 ---
 
