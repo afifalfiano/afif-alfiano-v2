@@ -1,10 +1,11 @@
 ---
 import experiences from "../collections/experiences.json";
+import techStack from "../collections/tech-stack.json";
 import AboutExperience from "../components/about-experience.astro";
 import PageHeading from "../components/page-heading.astro";
 import Layout from "../layouts/main.astro";
 
-const urlLatestCV = "/assets/resume/CV_Muhammad_Afif_Alfiano_2026.pdf";
+// const urlLatestCV = "/assets/resume/CV_Muhammad_Afif_Alfiano_2026.pdf";
 ---
 
 <Layout title="About Me | AA" description="Senior Frontend Developer with 5+ years of experience building scalable web apps for international teams.">
@@ -60,19 +61,19 @@ const urlLatestCV = "/assets/resume/CV_Muhammad_Afif_Alfiano_2026.pdf";
       I care a lot about writing clean, maintainable code and making things fast. I enjoy mentoring, owning the delivery cycle end-to-end, and bridging the gap between engineering and product. Outside of work, I write on Medium, build side projects, and slowly make my way through German lessons.
     </p>
 
-    <h2 class="mb-2 mt-6 text-2xl font-bold dark:text-neutral-200">Curriculum Vitae</h2>
+    <!-- <h2 class="mb-2 mt-6 text-2xl font-bold dark:text-neutral-200">Curriculum Vitae</h2>
     <p
       class="text-sm leading-6 text-gray-600 dark:text-neutral-400 sm:leading-7 lg:leading-8 sm:text-base lg:text-lg"
     >
       <a href={urlLatestCV} target="_blank" rel="noopener noreferrer" class="mb-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:underline">
         View Latest CV
       </a>
-    </p>
+    </p> -->
 
     <h2 class="mt-8 mb-4 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Tech Stack</h2>
     <div class="flex flex-wrap gap-2">
       {
-        [...new Set(experiences.flatMap((e) => e.techstacks))].map((tech) => (
+        techStack.map(({ tech }) => (
           <span class="px-3 py-1 text-xs font-medium rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors duration-200">
             {tech}
           </span>

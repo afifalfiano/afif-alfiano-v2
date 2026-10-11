@@ -1,18 +1,13 @@
 ---
 import { Image } from "astro:assets";
+import techStack from "../collections/tech-stack.json";
 import Projects from "../components/home/projects.astro";
 import Separator from "../components/home/separator.astro";
 import Writings from "../components/home/writings.astro";
 import Layout from "../layouts/main.astro";
 
 const canHelpTech = [
-	{ tech: "Angular", class: "from-cyan-500 to-blue-600" },
-	{ tech: "React", class: "from-violet-300 to-fuchsia-600" },
-	{ tech: "Next.js", class: "from-sky-500 to-indigo-600" },
-	{ tech: "Ionic", class: "from-blue-400 to-cyan-600" },
-	{ tech: "TypeScript", class: "from-blue-500 to-blue-700" },
-	{ tech: "Micro-frontend", class: "from-orange-400 to-orange-600" },
-	{ tech: "Web Performance", class: "from-green-400 to-emerald-600" },
+	...techStack,
 	{ tech: "& more..", class: "from-neutral-400 to-neutral-600" },
 ];
 ---
@@ -89,7 +84,7 @@ const canHelpTech = [
           </div>
           <div class="relative z-30 ps-5">
             <Image 
-              src="/assets/images/afif-cartoons.png" 
+              src="/assets/images/afif.jpeg" 
               alt="Afif Alfiano"
               width="50" 
               height="50"

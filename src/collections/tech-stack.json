@@ -1,0 +1,16 @@
+[
+	{ "tech": "Angular", "class": "from-cyan-500 to-blue-600" },
+	{ "tech": "React", "class": "from-violet-300 to-fuchsia-600" },
+	{ "tech": "Vue.js", "class": "from-emerald-400 to-green-600" },
+	{ "tech": "Next.js", "class": "from-sky-500 to-indigo-600" },
+	{ "tech": "Ionic", "class": "from-blue-400 to-cyan-600" },
+	{ "tech": "TypeScript", "class": "from-blue-500 to-blue-700" },
+	{ "tech": "NestJS", "class": "from-rose-500 to-red-600" },
+	{ "tech": "GraphQL", "class": "from-pink-500 to-fuchsia-700" },
+	{
+		"tech": "BFF (Backend for Frontend)",
+		"class": "from-purple-500 to-pink-600"
+	},
+	{ "tech": "Micro-frontend", "class": "from-orange-400 to-orange-600" },
+	{ "tech": "Web Performance", "class": "from-green-400 to-emerald-600" }
+]
