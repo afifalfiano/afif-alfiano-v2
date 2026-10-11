@@ -12,7 +12,7 @@ import Layout from "../layouts/main.astro";
   <section class="relative z-20 max-w-2xl mx-auto my-12 px-7 lg:px-0">
     <PageHeading
       title="About Me"
-      description="Senior Frontend Developer with 5+ years of experience. I build fast, scalable web apps for international teams — currently at CheckProof, Stockholm, Sweden (remote from Indonesia)."
+      description="Senior Frontend Developer with 5+ years of experience. I write code, fix bugs, and ship things — currently at CheckProof (Sweden), working remotely from Indonesia."
     />
 
     <div class="relative z-30 w-full mt-10 rounded-xl bg-neutral-900 dark:bg-neutral-800 border border-neutral-700 overflow-hidden">
@@ -28,9 +28,6 @@ import Layout from "../layouts/main.astro";
   <span class="text-red-400">currentlyAt</span><span class="text-white">:</span>  <span class="text-green-300">"CheckProof, Stockholm, Sweden 🇸🇪"</span><span class="text-white">,</span>
   <span class="text-red-400">workingFrom</span><span class="text-white">:</span> <span class="text-green-300">"Indonesia 🇮🇩 (remote)"</span><span class="text-white">,</span>
   <span class="text-red-400">experience</span><span class="text-white">:</span>   <span class="text-green-300">"5+ years"</span><span class="text-white">,</span>
-  <span class="text-red-400">stack</span><span class="text-white">:</span>        <span class="text-white">[</span><span class="text-green-300">"Angular"</span><span class="text-white">,</span> <span class="text-green-300">"React"</span><span class="text-white">,</span> <span class="text-green-300">"TypeScript"</span><span class="text-white">]</span><span class="text-white">,</span>
-  <span class="text-red-400">openTo</span><span class="text-white">:</span>       <span class="text-white">[</span><span class="text-green-300">"remote"</span><span class="text-white">,</span> <span class="text-green-300">"relocation"</span><span class="text-white">]</span><span class="text-white">,</span>
-  <span class="text-red-400">learning</span><span class="text-white">:</span>     <span class="text-white">[</span><span class="text-green-300">"English 🇬🇧"</span><span class="text-white">,</span> <span class="text-green-300">"German 🇩🇪"</span><span class="text-white">],</span>
 <span class="text-white">&#125;</span>
 </code></pre>
     </div>
@@ -73,10 +70,8 @@ import Layout from "../layouts/main.astro";
     <h2 class="mt-8 mb-4 text-2xl font-bold lg:mt-10 sm:mt-6 dark:text-neutral-200">Tech Stack</h2>
     <div class="flex flex-wrap gap-2">
       {
-        techStack.map(({ tech }) => (
-          <span class="px-3 py-1 text-xs font-medium rounded-full border border-dashed border-neutral-300 dark:border-neutral-700 text-neutral-600 dark:text-neutral-400 hover:border-neutral-500 dark:hover:border-neutral-500 transition-colors duration-200">
-            {tech}
-          </span>
+        techStack.map(({ tech, class: gradient }) => (
+          <span class=`text-sm text-neutral-200 rounded-full bg-gradient-to-br ${gradient} py-1 px-2`>{tech}</span>
         ))
       }
     </div>
